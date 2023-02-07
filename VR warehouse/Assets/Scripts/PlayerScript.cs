@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody playerRB;
 
+    public OVRCameraRig cameraRig;
+
     private void Start()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -24,29 +26,14 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         //camera
-        rotation.y += Input.GetAxis("Mouse X") * sensitivity;
-        transform.eulerAngles = rotation;
-        camrotation.y = rotation.y;
-        mouseVertical = Input.GetAxis("Mouse Y");
-        if (camrotation.x < maxXRotation && camrotation.x > -maxXRotation)
-        {
-            camrotation.x -= mouseVertical * sensitivity;
-        }
-        else if (camrotation.x >= maxXRotation && mouseVertical > 0)
-        {
-            camrotation.x -= mouseVertical * sensitivity;
-        }
-        else if (camrotation.x <= -maxXRotation && mouseVertical < 0)
-        {
-            camrotation.x -= mouseVertical * sensitivity;
-        }
-        cam.transform.eulerAngles = camrotation;
+        Vector3 headsetPosition = cameraRig.centerEyeAnchor.position;
+        Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
+        cam.transform.rotation = headsetRotation;
     }
 
     private void FixedUpdate()
     {
         //movement
-        //movement.x = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
         MovePlayer();
