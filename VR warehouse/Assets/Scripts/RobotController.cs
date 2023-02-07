@@ -1,38 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class RobotController : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public GameObject currentProduct;
-    public KeyCode GetProductKey;
-    public GameObject exportBox;
+    public NavMeshAgent agent; 
+    public bool gettingProduct;
     public GameObject holdingProduct;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameObject currentProduct;
+    public List<GameObject> orderList;
+    private int currentOrder;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public GameObject exportBox;
     
-
-    public void SetProduct()
+    public void NewOrders(List<GameObject> _newOrders)
     {
-        
+        orderList.Clear();
+        this.orderList = _newOrders;
+        currentOrder = 0;
+        GetProduct();
     }
-    public void GetProduct(GameObject _newProduct)
+    public void GetProduct()
     {
-        Transform product = _newProduct.transform;
-
+        Transform product = orderList.ElementAt(currentOrder).transform;
+        currentProduct = product.gameObject;
+        
         agent.SetDestination(product.position);
+        gettingProduct = true;
+        currentOrder++;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,15 +41,18 @@ public class RobotController : MonoBehaviour
             print("Product Found!");
             holdingProduct = collision.gameObject;
 
-            holdingProduct.transform.parent = this.gameObject.transform.GetChild(0);
-            holdingProduct.transform.position = gameObject.transform.GetChild(0).position;
+            holdingProduct.transform.parent = this.transform.GetChild(0);
+            holdingProduct.transform.position = this.transform.GetChild(0).position;
 
 
             agent.SetDestination(exportBox.transform.position);
         }
         if (collision.gameObject == exportBox)
-        {
+        { 
+            collision.gameObject.GetComponent<ExportManager>().ExportProduct(holdingProduct);
             Destroy(holdingProduct);
+            gettingProduct = false;
+            
         }
     }
 

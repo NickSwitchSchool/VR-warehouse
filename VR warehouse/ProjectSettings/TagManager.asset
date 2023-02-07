@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RoomLight
+  - SamplesInfoPanel
+  - Robots
+  - Products
   layers:
   - Default
   - TransparentFX
