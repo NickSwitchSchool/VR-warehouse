@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float sensitivity;
-    public float speed;
-    public float maxXRotation;
-    float mouseVertical;
-
-    public GameObject cam;
-
-    Vector3 rotation;
-    Vector3 camrotation;
+    [Header("Movement")]
+    [SerializeField] float speed;
     Vector3 movement;
-
     Rigidbody playerRB;
-
-    public OVRCameraRig cameraRig;
+    [Space(20)]
+    [Header("Camera")]
+    [SerializeField] float sensitivity;
+    [SerializeField] float maxXRotation;
+    [SerializeField] float quickRotateInterval;
+    [SerializeField] float quickRotateDegrees;
+    float intervalTimer;
+    [SerializeField] GameObject cam;
+    [SerializeField] OVRCameraRig cameraRig;
 
     private void Start()
     {
@@ -26,7 +25,15 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         //camera
-        Vector3 headsetPosition = cameraRig.centerEyeAnchor.position;
+        Vector2 rotateCam = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+        if (rotateCam.x >= .5f)
+        {
+            QuickRotate(quickRotateDegrees);
+        }
+        else if (rotateCam.x <= -.5f)
+        {
+            QuickRotate(-quickRotateDegrees);
+        }
         Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
         cam.transform.rotation = headsetRotation;
     }
@@ -43,5 +50,16 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 moveVector = transform.TransformDirection(movement) * speed * Time.deltaTime;
         playerRB.velocity = new Vector3(moveVector.x, playerRB.velocity.y, moveVector.z);
+    }
+
+    private void QuickRotate(float degrees)
+    {
+        intervalTimer += Time.deltaTime;
+
+        if (intervalTimer >= quickRotateInterval)
+        {
+            intervalTimer = 0;
+            cameraRig.gameObject.transform.Rotate(0, degrees, 0);
+        }
     }
 }
