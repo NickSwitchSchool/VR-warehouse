@@ -50,9 +50,8 @@ public class RobotController : MonoBehaviour
         if (collision.gameObject == exportBox)
         { 
             collision.gameObject.GetComponent<ExportManager>().ExportProduct(holdingProduct);
-            Destroy(holdingProduct);
             gettingProduct = false;
-            
+            GetProduct();
         }
     }
 
