@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject rightHand;
     [SerializeField] GameObject beam;
     RaycastHit tpCheck;
+    [SerializeField] Material legitTPPos;
+    [SerializeField] Material illigalTPPos;
     [Space(20)]
     [Header("Camera")]
     [SerializeField] bool testWithoutVR;
@@ -68,11 +70,19 @@ public class PlayerScript : MonoBehaviour
         }
 
         //teleport
-        rightHand.transform.localPosition = cameraRig.rightHandAnchor.position + new Vector3(0, .9f, 0) + transform.forward * 0.2f;
+        rightHand.transform.localPosition = cameraRig.rightHandAnchor.position + new Vector3(0, .9f, 0) + cameraRig.transform.forward * 0.2f;
         rightHand.transform.localRotation = cameraRig.rightHandAnchor.rotation;
         if (OVRInput.Get(OVRInput.Button.Two))
         {
             beam.SetActive(true);
+            if (Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out tpCheck, 100))
+            {
+                beam.GetComponent<MeshRenderer>().material = legitTPPos;
+            }
+            else
+            {
+                beam.GetComponent<MeshRenderer>().material = illigalTPPos;
+            }
         }
         else if (OVRInput.GetUp(OVRInput.Button.Two))
         {
@@ -106,7 +116,7 @@ public class PlayerScript : MonoBehaviour
         {
             intervalTimer = 0;
             cameraRig.gameObject.transform.Rotate(0, degrees, 0);
-            rightHand.transform.Rotate(0, -degrees, 0);
+            //rightHand.transform.Rotate(0, -degrees, 0);
         }
     }
 }
