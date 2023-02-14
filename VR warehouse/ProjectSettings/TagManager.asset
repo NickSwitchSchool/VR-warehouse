@@ -8,6 +8,7 @@ TagManager:
   - SamplesInfoPanel
   - Robots
   - Products
+  - TestInteractable
   layers:
   - Default
   - TransparentFX

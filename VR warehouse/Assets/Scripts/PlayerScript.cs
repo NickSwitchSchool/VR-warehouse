@@ -27,6 +27,8 @@ public class PlayerScript : MonoBehaviour
     float intervalTimer;
     [SerializeField] GameObject cam;
     [SerializeField] OVRCameraRig cameraRig;
+    [Header("Interaction")]
+    RaycastHit interactableCheck;
 
     private void Start()
     {
@@ -72,7 +74,7 @@ public class PlayerScript : MonoBehaviour
         //teleport
         rightHand.transform.localPosition = cameraRig.rightHandAnchor.position + new Vector3(0, .9f, 0) + cameraRig.transform.forward * 0.2f;
         rightHand.transform.localRotation = cameraRig.rightHandAnchor.rotation;
-        if (OVRInput.Get(OVRInput.Button.Two))
+        if (rightJoystick.y >= .5f)
         {
             beam.SetActive(true);
             if (Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out tpCheck, 100))
@@ -84,12 +86,31 @@ public class PlayerScript : MonoBehaviour
                 beam.GetComponent<MeshRenderer>().material = illigalTPPos;
             }
         }
-        else if (OVRInput.GetUp(OVRInput.Button.Two))
+        else if (rightJoystick.y < .5f && beam.activeSelf)
         {
             beam.SetActive(false);
             if (Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out tpCheck, 100))
             {
                 transform.position = tpCheck.point + new Vector3(0, .3f, 0);
+            }
+        }
+
+        //interaction
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 2))
+        {
+            if (interactableCheck.transform.gameObject.TryGetComponent(out Interactable interactable))
+            {
+                interactable.ShowUXButton();
+                if (OVRInput.Get(OVRInput.Button.Two) || Input.GetButtonDown("Use"))
+                {
+                    //test interaction box
+                    if (interactable.gameObject.CompareTag("TestInteractable"))
+                    {
+                        interactable.gameObject.transform.position += new Vector3(Random.Range(-4, 4), 0, Random.Range(-4, 4));
+                    }
+
+                    //implement moreinteractions here
+                }
             }
         }
     }
@@ -116,7 +137,6 @@ public class PlayerScript : MonoBehaviour
         {
             intervalTimer = 0;
             cameraRig.gameObject.transform.Rotate(0, degrees, 0);
-            //rightHand.transform.Rotate(0, -degrees, 0);
         }
     }
 }
