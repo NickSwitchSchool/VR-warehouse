@@ -6,47 +6,31 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class ExportManager : MonoBehaviour
-{
-    public List<GameObject> robots;
-    public List<GameObject> products;
+{ 
+    public InventoryManager inventoryManager;
+    public List<Product> exportList;
 
-    public List<GameObject> allProducts;
+    [Header("Truck")]
     public GameObject currentTruck;
     // Start is called before the first frame update
     void Start()
     {
-        robots = GameObject.FindGameObjectsWithTag("Robots").ToList();
-        var _products = GameObject.FindGameObjectsWithTag("Products");
-        products = _products.ToList();
         
     }
 
     // Update is called once per frame
-    public void AddOrder(List<ProductData> truckList)
+    public void AddOrder(List<Product> truckList)
     {
-        for(int i  = 0; i < truckList.Count; i++)
-        {
-            for(int am = 0; am < truckList.ElementAt(i).productAmount; am++)
-            {
-                allProducts.Add(truckList.ElementAt(i).productObject);
-            }
-            
-        }
+        //check with InventoryManager if product is present and add it to order list
+        GiveOrders();
     }
     public void GiveOrders()
     {
-        for(int a = 0; a < robots.Count; a++)
-        {
-            if(robots.ElementAt(a).GetComponent<RobotController>().gettingProduct)
-            {
-                robots.ElementAt(a).GetComponent<RobotController>().NewOrders(allProducts);
-            }
-        }
+        //Call ExportRobot and give it the order list
+        //Add order list to InventoryManagers ExportList
     }
-
-    public void ExportProduct(GameObject proToExport)
+    public void RemoveProduct(Product productToExport)
     {
-        products.Remove(proToExport);
-        Destroy(proToExport);
+        inventoryManager.RemoveProduct(productToExport);
     }
 }

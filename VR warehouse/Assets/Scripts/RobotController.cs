@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,49 +9,60 @@ public class RobotController : MonoBehaviour
 {
     public NavMeshAgent agent; 
     public bool gettingProduct;
-    public GameObject holdingProduct;
+    public Product holdingProduct;
 
     private GameObject currentProduct;
-    public List<GameObject> orderList;
+    public List<Product> orderList;
+    [SerializeField]
     private int currentOrder;
-
-    public GameObject exportBox;
+    public Transform target;
     
-    public void NewOrders(List<GameObject> _newOrders)
+    public void NewOrders(List<Product> _newOrders)
     {
-        orderList.Clear();
         this.orderList = _newOrders;
         currentOrder = 0;
         GetProduct();
     }
     public void GetProduct()
     {
-        Transform product = orderList.ElementAt(currentOrder).transform;
-        currentProduct = product.gameObject;
+        currentOrder = 0;
+        if(currentOrder >= this.orderList.Count)
+        {
+            gettingProduct = false;
+            return;
+        }
+        else if(orderList.ElementAt(0) == null)
+        {
+            while(orderList.ElementAt(currentOrder) == null)
+            {
+                orderList.RemoveAt(currentOrder);
+            }
+        }
+        target = orderList.ElementAt(currentOrder).productObject.transform;
+        currentProduct = target.gameObject;
         
-        agent.SetDestination(product.position);
+        agent.SetDestination(target.position);
         gettingProduct = true;
-        currentOrder++;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         print("Collision Detected!");
-        if (collision.gameObject == currentProduct)
+        if (collision.gameObject == currentProduct && holdingProduct == null)
         {
             print("Product Found!");
-            holdingProduct = collision.gameObject;
+            holdingProduct = collision.gameObject.GetComponent<Product>();
 
-            holdingProduct.transform.parent = this.transform.GetChild(0);
-            holdingProduct.transform.position = this.transform.GetChild(0).position;
+            holdingProduct.productObject.transform.parent = this.transform.GetChild(0);
+            holdingProduct.productObject.transform.position = this.transform.GetChild(0).position;
+            holdingProduct.productObject.transform.rotation = this.transform.GetChild(0).rotation;
 
 
-            agent.SetDestination(exportBox.transform.position);
+            //agent.SetDestination(.transform.position);
         }
-        if (collision.gameObject == exportBox)
-        { 
-            collision.gameObject.GetComponent<ExportManager>().ExportProduct(holdingProduct);
-            gettingProduct = false;
+        if (collision.gameObject == target)
+        {
+            collision.gameObject.GetComponent<ExportManager>().RemoveProduct(holdingProduct);
             GetProduct();
         }
     }
