@@ -777,6 +777,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magazijnkast_big
       objectReference: {fileID: 0}
+    - target: {fileID: 1608127893824476048, guid: c7b91a31cc84c18499e1b2ad25555df4, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608127893824476048, guid: c7b91a31cc84c18499e1b2ad25555df4, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b91a31cc84c18499e1b2ad25555df4, type: 3}
 --- !u!1001 &6393615949982640464
