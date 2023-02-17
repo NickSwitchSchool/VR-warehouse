@@ -96,7 +96,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         //interaction
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 2))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 4))
         {
             if (interactableCheck.transform.gameObject.TryGetComponent(out Interactable interactable))
             {
@@ -137,6 +137,7 @@ public class PlayerScript : MonoBehaviour
         {
             intervalTimer = 0;
             cameraRig.gameObject.transform.Rotate(0, degrees, 0);
+            transform.Rotate(0, degrees, 0);
         }
     }
 }

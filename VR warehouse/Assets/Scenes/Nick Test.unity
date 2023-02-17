@@ -1022,7 +1022,7 @@ MonoBehaviour:
   beam: {fileID: 398990429}
   legitTPPos: {fileID: 2100000, guid: 4e4dd5c87dd9fad4abf4f890be8c9948, type: 2}
   illigalTPPos: {fileID: 2100000, guid: cddd64a8dda693a41b502d1a91c1ce2f, type: 2}
-  testWithoutVR: 1
+  testWithoutVR: 0
   sensitivity: 7
   maxXRotation: 90
   quickRotateInterval: 0.5
