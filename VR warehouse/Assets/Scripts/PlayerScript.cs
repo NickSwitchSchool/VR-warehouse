@@ -140,4 +140,9 @@ public class PlayerScript : MonoBehaviour
             transform.Rotate(0, degrees, 0);
         }
     }
+
+    public void DebugMusicSwitch(AudioClip n_music)
+    {
+        StartCoroutine(GetComponent<Settings>().SwitchMusic(n_music));
+    }
 }
