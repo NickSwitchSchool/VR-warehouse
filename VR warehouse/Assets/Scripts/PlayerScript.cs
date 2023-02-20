@@ -141,8 +141,8 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void DebugMusicSwitch(AudioClip n_music)
+    public void DebugStressRelaxSwitch(bool onOff)
     {
-        StartCoroutine(GetComponent<Settings>().SwitchMusic(n_music));
+        //StartCoroutine(GetComponent<Settings>().SwitchMusic(n_music));
     }
 }
