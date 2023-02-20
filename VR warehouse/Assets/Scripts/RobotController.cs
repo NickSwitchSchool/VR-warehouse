@@ -10,6 +10,7 @@ public class RobotController : MonoBehaviour
     public NavMeshAgent agent; 
     public bool gettingProduct;
     public Product holdingProduct;
+    public InventoryManager inventoryManager;
 
     private GameObject currentProduct;
     public List<Product> orderList;
@@ -58,9 +59,9 @@ public class RobotController : MonoBehaviour
             holdingProduct.productObject.transform.rotation = this.transform.GetChild(0).rotation;
 
 
-            //agent.SetDestination(.transform.position);
+            agent.SetDestination(inventoryManager.exportBox.transform.position);
         }
-        if (collision.gameObject == target)
+        if (collision.gameObject == inventoryManager.exportBox)
         {
             collision.gameObject.GetComponent<ExportManager>().RemoveProduct(holdingProduct);
             GetProduct();

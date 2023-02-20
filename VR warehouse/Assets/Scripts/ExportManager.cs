@@ -6,16 +6,23 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class ExportManager : MonoBehaviour
-{ 
+{
+    public KeyCode spawnTruck;
+    public GameObject truckSpawn;
+    public GameObject truck;
     public InventoryManager inventoryManager;
     public List<Product> exportList;
 
     [Header("Truck")]
     public GameObject currentTruck;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        
+        if(Input.GetKeyDown(spawnTruck))
+        {
+            Instantiate(truck, truckSpawn.transform.position, Quaternion.identity);
+
+        }
     }
 
     // Update is called once per frame

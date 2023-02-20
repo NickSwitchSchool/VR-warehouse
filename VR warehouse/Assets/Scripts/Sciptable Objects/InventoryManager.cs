@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,14 @@ public class InventoryManager : MonoBehaviour
     public GameObject importBox;
 
     [Header("Products")]
+    [SerializeField]
+    public List<Product> productList;
     public List<Product> importList;
     public List<Product> exportList;
     public List<Product> inventory;
+
     
+
     public void AddProduct(Product newProduct)
     {
         if(inventory.Contains(newProduct))
@@ -34,6 +39,10 @@ public class InventoryManager : MonoBehaviour
         if(inventory.Contains(oldProduct))
         {
             inventory.ElementAt(inventory.IndexOf(oldProduct)).productAmount--;
+            if(inventory.ElementAt(inventory.IndexOf(oldProduct)).productAmount <= 0)
+            {
+                inventory.Remove(oldProduct);
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 42793008486966002}
   - component: {fileID: 9184101736714498131}
   - component: {fileID: 9039480906125928787}
-  - component: {fileID: 8645184465460482867}
   m_Layer: 0
   m_Name: CylinderProduct
   m_TagString: Untagged
@@ -99,17 +98,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8645184465460482867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8366366586416472969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d935f57732fe8244a9b09563ff1512e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productAmount: 0
-  productObject: {fileID: 8366366586416472969}
