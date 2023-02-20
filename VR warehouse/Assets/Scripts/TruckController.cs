@@ -11,6 +11,7 @@ public class TruckController : MonoBehaviour
 {
     public InventoryManager inventoryManager;
     public ExportManager exportManager;
+    public List<Product> exportNeeds;
     public List<Product> truckInventory;
     public enum PortType {Import, Export}
     public PortType task;
@@ -32,11 +33,12 @@ public class TruckController : MonoBehaviour
         inventoryManager = exportManager.inventoryManager;
         if(task == PortType.Export)
         {
-
+            RandomOrder(task);
         }
         if(task == PortType.Import)
         {
-            RandomOrder();
+
+            RandomOrder(task);
         }
         startTime = Time.time;
         travelTime = Vector3.Distance(startPos.position, endPos.position);
@@ -51,47 +53,87 @@ public class TruckController : MonoBehaviour
 
             gameObject.transform.position = Vector3.Lerp(startPos.position, endPos.position, fracComplete);
         }
-        if(gameObject.transform.position == endPos.position)
+        if(gameObject.transform.position == endPos.position && !onSpot)
         {
+            onSpot = true;
             doorState = true;
             ToggleDoors(task);
+            
         }
     }
-    public void RandomOrder()
+    public void RandomOrder(PortType type)
     {
         for (int i = 0; i < 7; i++)
         {
             Product virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
             Product newProduct = new Product(virtualProduct.productAmount, virtualProduct.productObject);
-            if (truckInventory.Count > 0)
+            switch (type)
             {
-                bool addProduct = true;
-                int productInd = 0;
-                for (int a = 0; a < truckInventory.Count; a++)
-                {
-                    if (truckInventory[a].productObject == newProduct.productObject)
+                case PortType.Import:
+                    if (truckInventory.Count > 0)
                     {
-                        truckInventory[a].productAmount++;
-                        addProduct = false;
-                        break;
+                        bool addProduct = true;
+                        int productInd = 0;
+                        for (int a = 0; a < truckInventory.Count; a++)
+                        {
+                            if (truckInventory[a].productObject == newProduct.productObject)
+                            {
+                                truckInventory[a].productAmount++;
+                                addProduct = false;
+                                break;
+                            }
+                            else
+                            {
+                                productInd++;
+                            }
+                        }
+                        if (addProduct)
+                        {
+                            truckInventory.Add(newProduct);
+                            truckInventory[productInd].productAmount++;
+                        }
                     }
                     else
                     {
-                        productInd++;
+                        truckInventory.Add(newProduct);
+                        truckInventory[0].productAmount++;
                     }
-                }
-                if(addProduct)
-                {
-                    truckInventory.Add(newProduct);
-                    truckInventory[productInd].productAmount++;
-                }
+
+                    break;
+
+                case PortType.Export:
+                    if (exportNeeds.Count > 0)
+                    {
+                        bool addProduct = true;
+                        int productInd = 0;
+                        for (int a = 0; a < exportNeeds.Count; a++)
+                        {
+                            if (exportNeeds[a].productObject == newProduct.productObject)
+                            {
+                                exportNeeds[a].productAmount++;
+                                addProduct = false;
+                                break;
+                            }
+                            else
+                            {
+                                productInd++;
+                            }
+                        }
+                        if (addProduct)
+                        {
+                            exportNeeds.Add(newProduct);
+                            exportNeeds[productInd].productAmount++;
+                        }
+                    }
+                    else
+                    {
+                        exportNeeds.Add(newProduct);
+                        exportNeeds[0].productAmount++;
+                    }
+
+                    break;
             }
-            else
-            {
-                truckInventory.Add(newProduct);
-                truckInventory[0].productAmount++;
-            }
-        }
+        }    
 
     }
 
@@ -110,12 +152,44 @@ public class TruckController : MonoBehaviour
     }
     public void EmptyTruck()
     {
-
+        if (truckInventory.Count <= 0 && onSpot)
+        {
+            StartCoroutine(CloseDoor());
+        }
     }
 
     public void FillTruck()
     {
-        
+        if (exportNeeds.Count <= 0 && onSpot)
+        {
+            StartCoroutine(CloseDoor());
+        }
     }
-    
+
+    IEnumerator CloseDoor()
+    {
+        doorState = false;
+        ToggleDoors(this.GetComponent<TruckController>().task);
+        yield return new WaitForSeconds(5);
+        if(onSpot)
+        {
+            startTime = Time.time;
+            Transform oldPos = endPos;
+            endPos = startPos;
+            startPos = oldPos;
+            onSpot = false;
+        }
+        yield return new WaitForSeconds(3);
+        var truckManager = GameObject.Find("TruckManager").GetComponent<TruckSpawner>();
+        if (this.task == PortType.Import)
+        {
+            truckManager.importSpot = false;
+        }
+        if (this.task == PortType.Export)
+        {
+            truckManager.exportSpot = false;
+        }
+        truckManager.StartCoroutine(truckManager.NewTruck());
+        Destroy(gameObject);
+    }
 }
