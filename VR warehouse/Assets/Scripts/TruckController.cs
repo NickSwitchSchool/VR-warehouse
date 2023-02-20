@@ -97,6 +97,7 @@ public class TruckController : MonoBehaviour
 
     public void ToggleDoors(PortType _type)
     {
+        //if doorstate is false, door are closed, if true they are open
         this.GetComponent<Animator>().SetBool("TruckDoor", doorState);
         if(_type == PortType.Import)
         {
