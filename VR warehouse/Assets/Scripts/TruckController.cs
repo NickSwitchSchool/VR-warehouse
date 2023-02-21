@@ -58,7 +58,11 @@ public class TruckController : MonoBehaviour
             onSpot = true;
             doorState = true;
             ToggleDoors(task);
-            
+            if(task == PortType.Export)
+            {
+                exportManager.currentTruck = this.gameObject;
+                exportManager.AddOrder(exportNeeds);
+            }
         }
     }
     public void RandomOrder(PortType type)

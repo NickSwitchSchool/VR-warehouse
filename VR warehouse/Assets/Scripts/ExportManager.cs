@@ -15,26 +15,62 @@ public class ExportManager : MonoBehaviour
 
     [Header("Truck")]
     public GameObject currentTruck;
-    // Start is called before the first frame update
-    void Update()
-    {
-        if(Input.GetKeyDown(spawnTruck))
-        {
-            Instantiate(truck, truckSpawn.transform.position, Quaternion.identity);
-
-        }
-    }
-
-    // Update is called once per frame
     public void AddOrder(List<Product> truckList)
     {
-        //check with InventoryManager if product is present and add it to order list
+        for(int i = 0; i < truckList.Count; i++)
+        {
+            Product virtualProduct = truckList[i];
+            Product newProduct = new Product(virtualProduct.productAmount, virtualProduct.productObject);
+            //check with InventoryManager if product is present and add it to order list
+            for (int x = 0; x < inventoryManager.inventory.Count; x++)
+            {
+                if (inventoryManager.inventory[x].productObject == newProduct.productObject)
+                {
+                    bool addProduct = true;
+                    int productInd = 0;
+                    for (int a = 0; a < exportList.Count; a++)
+                    {
+                        if (exportList[a].productObject == newProduct.productObject)
+                        {
+                            exportList[a].productAmount++;
+                            addProduct = false;
+                            break;
+                        }
+                        else
+                        {
+                            productInd++;
+                        }
+                    }
+                    if (addProduct)
+                    {
+                        exportList.Add(newProduct);
+                        exportList[productInd].productAmount++;
+                    }
+                }
+            }
+        }
         GiveOrders();
     }
     public void GiveOrders()
     {
-        //Call ExportRobot and give it the order list
-        //Add order list to InventoryManagers ExportList
+        //Call an ExportRobot and give it the order list
+        
+        bool robotFound = false;
+        for(int y= 0; y < inventoryManager.robots.Count; y++)
+        {
+            if(inventoryManager.robots[y].GetComponent<RobotController>().gettingProduct == false)
+            {
+                inventoryManager.robots[y].GetComponent<RobotController>().NewOrders(exportList);
+                robotFound = true;
+                break;
+            }
+           
+        }
+        if (!robotFound)
+        {
+            GiveOrders();
+        }
+        
     }
     public void RemoveProduct(Product productToExport)
     {

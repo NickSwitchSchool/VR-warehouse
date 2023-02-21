@@ -16,8 +16,6 @@ public class InventoryManager : MonoBehaviour
     [Header("Products")]
     [SerializeField]
     public List<Product> productList;
-    public List<Product> importList;
-    public List<Product> exportList;
     public List<Product> inventory;
 
     
