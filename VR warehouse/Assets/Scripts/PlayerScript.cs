@@ -29,6 +29,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] OVRCameraRig cameraRig;
     [Header("Interaction")]
     RaycastHit interactableCheck;
+    [Space(20)]
+    [Header("Debugging")]
+    [SerializeField] TimeToLoadTruck stresser;
 
     private void Start()
     {
@@ -141,8 +144,15 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void DebugStressRelaxSwitch(bool onOff)
+    public void DebugStressRelaxSwitch(bool n_stress)
     {
-        //StartCoroutine(GetComponent<Settings>().SwitchMusic(n_music));
+        if (n_stress)
+        {
+            stresser.ActivateStressMode();
+        }
+        else
+        {
+            stresser.DeactivateStressMode();
+        }
     }
 }
