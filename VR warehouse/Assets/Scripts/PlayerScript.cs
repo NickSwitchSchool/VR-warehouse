@@ -32,6 +32,9 @@ public class PlayerScript : MonoBehaviour
     [Space(20)]
     [Header("Debugging")]
     [SerializeField] TimeToLoadTruck stresser;
+    [Space(20)]
+    [Header("Other")]
+    bool paused;
 
     private void Start()
     {
@@ -39,6 +42,22 @@ public class PlayerScript : MonoBehaviour
     }
     private void Update()
     {
+        //pause game
+        if (Input.GetButtonDown("Cancel"))
+        {
+            paused = !paused;
+        }
+
+        if (paused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            return;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         //camera
         Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
         if (rightJoystick.x >= .5f)
