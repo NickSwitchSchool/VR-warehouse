@@ -6,7 +6,7 @@ public class TimeToLoadTruck : MonoBehaviour
 {
     [Header("Stress UX")]
     bool stressing;
-    [SerializeField] Light globalLight;
+    [SerializeField] Light[] alarmLights;
     [SerializeField] Color defaultAreaColor;
     [SerializeField] Color stressAreaColor;
     [SerializeField] float fadeSpeed;
@@ -43,11 +43,17 @@ public class TimeToLoadTruck : MonoBehaviour
         fadeAmount += fadeSpeed * Time.deltaTime;
         if (n_state)
         {
-            globalLight.color = Color.Lerp(globalLight.color, stressAreaColor, fadeAmount / 10);
+            foreach (Light n_alarmLight in alarmLights)
+            {
+                n_alarmLight.color = Color.Lerp(n_alarmLight.color, stressAreaColor, fadeAmount / 10);
+            }
         }
         else
         {
-            globalLight.color = Color.Lerp(globalLight.color, defaultAreaColor, fadeAmount / 10);
+            foreach (Light n_alarmLight in alarmLights)
+            {
+                n_alarmLight.color = Color.Lerp(n_alarmLight.color, defaultAreaColor, fadeAmount / 10);
+            }
         }
         
         if (stressing)
@@ -81,7 +87,10 @@ public class TimeToLoadTruck : MonoBehaviour
         else
         {
             fadeAmount += fadeSpeed * Time.deltaTime;
-            globalLight.color = Color.Lerp(globalLight.color, defaultAreaColor, fadeAmount / 10);
+            foreach (Light n_alarmLight in alarmLights)
+            {
+                n_alarmLight.color = Color.Lerp(n_alarmLight.color, defaultAreaColor, fadeAmount / 10);
+            }
             StartCoroutine(Chilling());
         }
     }
