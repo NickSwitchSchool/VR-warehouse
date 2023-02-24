@@ -1213,6 +1213,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fe45d425676d04a97a984454d7a64d, type: 3}
+--- !u!1001 &6806036570941290617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2667354927483009959, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_Name
+      value: GarageDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7608347
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.23884869
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337037031824122141, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
 --- !u!1001 &7639865672817829403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1327,60 +1384,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fddc85cfcfd18984c91936957283751b, type: 3}
---- !u!1001 &8636911365789382592
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.9745054
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.4408312
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094868887926616546, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871265472063630168, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
-      propertyPath: m_Name
-      value: GarageDoor
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 43ec23be693d28f4a8f2ccd88174d3db, type: 3}
