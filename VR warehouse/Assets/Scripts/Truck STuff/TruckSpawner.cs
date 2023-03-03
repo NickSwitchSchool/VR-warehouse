@@ -1,3 +1,4 @@
+using Oculus.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class TruckSpawner : MonoBehaviour
     public GameObject truck;
     public bool exportSpot;
     public bool importSpot;
+    public float timeWindow;
     public Transform exportTrans;
     public Transform exportSpawn;
     public Transform importTrans;
@@ -27,7 +29,7 @@ public class TruckSpawner : MonoBehaviour
             spawnedTruck.GetComponent<TruckController>().startPos = importSpawn;
             spawnedTruck.GetComponent<TruckController>().endPos = importTrans;
             importSpot = true;
-
+            spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
         }
         if(!exportSpot)
         {
@@ -36,7 +38,9 @@ public class TruckSpawner : MonoBehaviour
             spawnedTruck.GetComponent<TruckController>().startPos = exportSpawn;
             spawnedTruck.GetComponent<TruckController>().endPos = exportTrans;
             exportSpot = true;
+            spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
         }
+        
     }
     public IEnumerator NewTruck()
     {
@@ -50,7 +54,7 @@ public class TruckSpawner : MonoBehaviour
         //{
         //    this.GetComponent<TruckSpawner>().SpawnTruck();
         //}
-       
+        SpawnTruck();
         StopCoroutine(NewTruck());
     }
     

@@ -15,6 +15,8 @@ public class TruckController : MonoBehaviour
     public List<Product> truckInventory;
     public enum PortType {Import, Export}
     public PortType task;
+    public float timer;
+    public float timeWindow;
 
     public bool onSpot;
     private float travelTime;
@@ -42,6 +44,7 @@ public class TruckController : MonoBehaviour
         }
         startTime = Time.time;
         travelTime = Vector3.Distance(startPos.position, endPos.position);
+        timer = timeWindow;
     }
     public void Update()
     {
@@ -64,13 +67,23 @@ public class TruckController : MonoBehaviour
                 exportManager.AddOrder(exportNeeds);
             }
         }
+        if(onSpot)
+        {
+            timer = timer - Time.deltaTime;
+            if (timer <= 0)
+            {
+                truckInventory.Clear();
+                EmptyTruck();
+            }            
+        }
+
     }
     public void RandomOrder(PortType type)
     {
         for (int i = 0; i < 7; i++)
         {
             Product virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
-            Product newProduct = new Product(virtualProduct.productAmount, virtualProduct.productObject);
+            Product newProduct = new Product(virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
             switch (type)
             {
                 case PortType.Import:

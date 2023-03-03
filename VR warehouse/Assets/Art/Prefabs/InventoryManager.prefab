@@ -126,6 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418621601591139130}
   - component: {fileID: 418621601591139129}
+  - component: {fileID: 5869389301004886410}
   m_Layer: 0
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -169,15 +170,31 @@ MonoBehaviour:
   productList:
   - productAmount: 0
     productObject: {fileID: 3179456314036602054, guid: 0fcd8060cb3742c498e724ff05e1472b, type: 3}
+    weight: 0
   - productAmount: 0
     productObject: {fileID: 5834028151692114378, guid: 3089367449495dd46bb976bc08acacd4, type: 3}
+    weight: 0
   - productAmount: 0
     productObject: {fileID: 8366366586416472969, guid: 4879971b92479f54d8877d6ff9ff17e4, type: 3}
+    weight: 0
   - productAmount: 0
     productObject: {fileID: 6065525378554242004, guid: 65f67d51b9fa29644bed50a4297ed29d, type: 3}
-  importList: []
-  exportList: []
+    weight: 0
   inventory: []
+--- !u!114 &5869389301004886410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418621601591139128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d761ee5e46694b34daf67e8d48548531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 418621601591139129}
+  products: []
 --- !u!1 &418621601803776800
 GameObject:
   m_ObjectHideFlags: 0

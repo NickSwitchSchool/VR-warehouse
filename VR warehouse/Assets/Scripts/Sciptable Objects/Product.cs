@@ -7,12 +7,13 @@ public class Product
 {
     public int productAmount;
     public GameObject productObject;
+    public float trendWeight;
 
-
-    public Product(int productAmount, GameObject productObject)
+    public Product(int productAmount, GameObject productObject, float weight)
     {
         this.productAmount = productAmount;
         this.productObject = productObject;
+        this.trendWeight = weight;
     }
 
 
