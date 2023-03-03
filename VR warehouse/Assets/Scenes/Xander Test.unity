@@ -4907,6 +4907,10 @@ PrefabInstance:
       propertyPath: truck
       value: 
       objectReference: {fileID: 6144708012275587309, guid: 2dfaad26ff4fcbb429adc6bb44a062c3, type: 3}
+    - target: {fileID: 2208451496752173619, guid: 6b6867f9f936db44abac799a8f3a9079, type: 3}
+      propertyPath: timeWindow
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2208451496752173628, guid: 6b6867f9f936db44abac799a8f3a9079, type: 3}
       propertyPath: m_RootOrder
       value: 8
