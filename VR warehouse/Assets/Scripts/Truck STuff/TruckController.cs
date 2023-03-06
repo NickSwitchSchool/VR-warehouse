@@ -83,7 +83,7 @@ public class TruckController : MonoBehaviour
         for (int i = 0; i < 7; i++)
         {
             Product virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
-            Product newProduct = new Product(virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+            Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
             switch (type)
             {
                 case PortType.Import:

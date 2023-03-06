@@ -20,7 +20,7 @@ public class ExportManager : MonoBehaviour
         for(int i = 0; i < truckList.Count; i++)
         {
             Product virtualProduct = truckList[i];
-            Product newProduct = new Product(virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+            Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
             //check with InventoryManager if product is present and add it to order list
             for (int x = 0; x < inventoryManager.inventory.Count; x++)
             {

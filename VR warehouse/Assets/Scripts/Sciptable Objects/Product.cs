@@ -5,12 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class Product
 {
+    public string productName;
     public int productAmount;
     public GameObject productObject;
     public float trendWeight;
 
-    public Product(int productAmount, GameObject productObject, float weight)
+
+    public Product(string productName, int productAmount, GameObject productObject, float weight)
     {
+        this.productName = productName;
         this.productAmount = productAmount;
         this.productObject = productObject;
         this.trendWeight = weight;
