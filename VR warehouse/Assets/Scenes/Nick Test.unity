@@ -616,11 +616,13 @@ GameObject:
   - component: {fileID: 539107786}
   - component: {fileID: 539107785}
   - component: {fileID: 539107784}
-  - component: {fileID: 539107783}
+  - component: {fileID: 539107788}
+  - component: {fileID: 539107789}
   - component: {fileID: 539107782}
+  - component: {fileID: 539107787}
   m_Layer: 0
   m_Name: InteractableBox
-  m_TagString: TestInteractable
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,19 +641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonDisplay: {fileID: 1724084111}
   visibilityTime: 0.5
---- !u!65 &539107783
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539107781}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &539107784
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -718,6 +707,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539107787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539107781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8401b867010054b92de8cfeddaadb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: []
+  pickedUpDistance: 2
+--- !u!54 &539107788
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539107781}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &539107789
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539107781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &539762393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1042,7 @@ MonoBehaviour:
   quickRotateDegrees: 30
   cam: {fileID: 1249010139}
   cameraRig: {fileID: 365495065}
+  stresser: {fileID: 1352389661}
 --- !u!54 &607956844
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1725,6 +1759,17 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1352389661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 587594566393793983, guid: 2ddc389e6e8be774093f253454f934e7, type: 3}
+  m_PrefabInstance: {fileID: 587594567619223372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5971fb52ece6fbd4bbaf0b3193177cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1424256911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,6 +2678,14 @@ PrefabInstance:
       propertyPath: globalLight
       value: 
       objectReference: {fileID: 569379396}
+    - target: {fileID: 587594566393793983, guid: 2ddc389e6e8be774093f253454f934e7, type: 3}
+      propertyPath: alarmLights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587594566393793983, guid: 2ddc389e6e8be774093f253454f934e7, type: 3}
+      propertyPath: alarmLights.Array.data[0]
+      value: 
+      objectReference: {fileID: 569379396}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ddc389e6e8be774093f253454f934e7, type: 3}
 --- !u!1001 &8104059839619109495
@@ -2689,6 +2742,14 @@ PrefabInstance:
     - target: {fileID: 8104059839944385664, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
       propertyPath: m_Name
       value: OVRCameraRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104059839945799548, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104059839945799548, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}

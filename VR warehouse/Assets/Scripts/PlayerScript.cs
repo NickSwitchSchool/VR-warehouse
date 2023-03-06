@@ -125,13 +125,13 @@ public class PlayerScript : MonoBehaviour
                 interactable.ShowUXButton();
                 if (OVRInput.Get(OVRInput.Button.Two) || Input.GetButtonDown("Use"))
                 {
-                    //test interaction box
-                    if (interactable.gameObject.CompareTag("TestInteractable"))
+                    //pickup box
+                    if (interactable.gameObject.CompareTag("Box"))
                     {
-                        interactable.gameObject.transform.position += new Vector3(Random.Range(-4, 4), 0, Random.Range(-4, 4));
+                        interactable.GetComponent<Box>().PickUpBox(this);
                     }
 
-                    //implement moreinteractions here
+                    //implement more interactions here
                 }
             }
         }
@@ -161,6 +161,16 @@ public class PlayerScript : MonoBehaviour
             cameraRig.gameObject.transform.Rotate(0, degrees, 0);
             transform.Rotate(0, degrees, 0);
         }
+    }
+
+    public Transform PlayerTransform()
+    {
+        return transform;
+    }
+
+    public Transform CamTransform()
+    {
+        return cam.transform;
     }
 
     public void DebugStressRelaxSwitch(bool n_stress)
