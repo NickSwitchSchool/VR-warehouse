@@ -23,8 +23,9 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void ShowUXButton()
+    public void ShowUXButton(Material n_buttonIndicatorMaterial)
     {
+        buttonDisplay.GetComponent<MeshRenderer>().material = n_buttonIndicatorMaterial;
         visibilityTimer = visibilityTime;
     }
 }

@@ -606,6 +606,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: pcMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
       propertyPath: stresser
       value: 
       objectReference: {fileID: 375922215}
@@ -613,6 +617,14 @@ PrefabInstance:
       propertyPath: cameraRig
       value: 
       objectReference: {fileID: 2124980522}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: pcButtonIndicator
+      value: 
+      objectReference: {fileID: 2100000, guid: fea62888c237d4e49bd46c4b0573dc33, type: 2}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: vrButtonIndicator
+      value: 
+      objectReference: {fileID: 2100000, guid: 82bd5201108b2584cafeed50c3ca1579, type: 2}
     - target: {fileID: 8112830683774441549, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
       propertyPath: m_Name
       value: Player
