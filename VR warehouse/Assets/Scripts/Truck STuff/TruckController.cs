@@ -90,8 +90,11 @@ public class TruckController : MonoBehaviour
                         EmptyTruck();
                     }
                 }
-                else
+                else if (task == PortType.Export)
                 {
+                    exportManager.currentTruck = this.gameObject;
+                    exportManager.AddOrder(exportNeeds);
+
                     truckInventory.Clear();
                     EmptyTruck();
                 }
