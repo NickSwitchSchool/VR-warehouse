@@ -141,9 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2edf37866c11d44989d90386782cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  truck: {fileID: 5116936697935823589, guid: 9ea55e187e0686c48a8a04a96c12d0e8, type: 3}
+  ordersCompleted: 0
+  truck: {fileID: 6144708012275587309, guid: 2dfaad26ff4fcbb429adc6bb44a062c3, type: 3}
   exportSpot: 0
   importSpot: 0
+  timeWindow: 20
   exportTrans: {fileID: 2208451496811244163}
   exportSpawn: {fileID: 2208451496078508817}
   importTrans: {fileID: 2208451495685526043}

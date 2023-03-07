@@ -198,8 +198,10 @@ MonoBehaviour:
   agent: {fileID: 149809395694457763}
   gettingProduct: 0
   holdingProduct:
+    productName: 
     productAmount: 0
     productObject: {fileID: 0}
+    trendWeight: 0
   inventoryManager: {fileID: 0}
   orderList: []
   currentOrder: 0

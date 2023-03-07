@@ -13,7 +13,7 @@ public class TruckController : MonoBehaviour
     public ExportManager exportManager;
     public List<Product> exportNeeds;
     public List<Product> truckInventory;
-    public enum PortType {Import, Export}
+    public enum PortType { Import, Export }
     public PortType task;
     public float timer;
     public float timeWindow;
@@ -33,11 +33,11 @@ public class TruckController : MonoBehaviour
     {
         exportManager = GameObject.Find("ExportBox").GetComponent<ExportManager>();
         inventoryManager = exportManager.inventoryManager;
-        if(task == PortType.Export)
+        if (task == PortType.Export)
         {
             RandomOrder(task);
         }
-        if(task == PortType.Import)
+        if (task == PortType.Import)
         {
 
             RandomOrder(task);
@@ -48,7 +48,7 @@ public class TruckController : MonoBehaviour
     }
     public void Update()
     {
-        if(!onSpot)
+        if (!onSpot)
         {
             float distCovered = (Time.time - startTime) * speed;
 
@@ -56,25 +56,35 @@ public class TruckController : MonoBehaviour
 
             gameObject.transform.position = Vector3.Lerp(startPos.position, endPos.position, fracComplete);
         }
-        if(gameObject.transform.position == endPos.position && !onSpot)
+        if (gameObject.transform.position == endPos.position && !onSpot)
         {
             onSpot = true;
             doorState = true;
             ToggleDoors(task);
-            if(task == PortType.Export)
+            if (task == PortType.Export)
             {
                 exportManager.currentTruck = this.gameObject;
                 exportManager.AddOrder(exportNeeds);
             }
         }
-        if(onSpot)
+        if (onSpot)
         {
             timer = timer - Time.deltaTime;
             if (timer <= 0)
             {
-                truckInventory.Clear();
-                EmptyTruck();
-            }            
+                if (task == PortType.Import)
+                {
+                    if (truckInventory.Count > 0)
+                    {
+                        timer += 5;
+                    }
+                }
+                else
+                {
+                    truckInventory.Clear();
+                    EmptyTruck();
+                }
+            }
         }
 
     }
@@ -84,6 +94,8 @@ public class TruckController : MonoBehaviour
         {
             Product virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
             Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+
+
             switch (type)
             {
                 case PortType.Import:
@@ -99,6 +111,7 @@ public class TruckController : MonoBehaviour
                                 addProduct = false;
                                 break;
                             }
+
                             else
                             {
                                 productInd++;
@@ -121,12 +134,21 @@ public class TruckController : MonoBehaviour
                 case PortType.Export:
                     if (exportNeeds.Count > 0)
                     {
+                        for (int a = 0; a < truckInventory.Count; a++)
+                        {
+                            while (truckInventory[a].productObject == newProduct.productObject && truckInventory[a].productAmount == 3)
+                            {
+                                virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
+                                newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+                            }
+                        }
+
                         bool addProduct = true;
                         int productInd = 0;
                         for (int a = 0; a < exportNeeds.Count; a++)
                         {
                             if (exportNeeds[a].productObject == newProduct.productObject)
-                            {
+                            { 
                                 exportNeeds[a].productAmount++;
                                 addProduct = false;
                                 break;
@@ -150,7 +172,7 @@ public class TruckController : MonoBehaviour
 
                     break;
             }
-        }    
+        }
 
     }
 
@@ -158,7 +180,7 @@ public class TruckController : MonoBehaviour
     {
         //if doorstate is false, door are closed, if true they are open
         this.GetComponent<Animator>().SetBool("TruckDoor", doorState);
-        if(_type == PortType.Import)
+        if (_type == PortType.Import)
         {
             //importDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
         }
@@ -188,7 +210,7 @@ public class TruckController : MonoBehaviour
         doorState = false;
         ToggleDoors(this.GetComponent<TruckController>().task);
         yield return new WaitForSeconds(5);
-        if(onSpot)
+        if (onSpot)
         {
             startTime = Time.time;
             Transform oldPos = endPos;
