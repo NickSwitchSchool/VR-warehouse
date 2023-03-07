@@ -42,14 +42,13 @@ public class TruckController : MonoBehaviour
         }
         if (task == PortType.Import)
         {
-            for (int a = 0; a < inventoryManager.inventory.Count; a++)
+            for (int a = 0; a < inventoryManager.productList.Count; a++)
             {
-                if (inventoryManager.inventory[a].productAmount < 3)
-                {
-
-                }
+                Product virtualProduct = inventoryManager.productList.ElementAt(a);
+                Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+                truckInventory.Add(newProduct);
+                truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount = 3;
             }
-
         }
         startTime = Time.time;
         travelTime = Vector3.Distance(startPos.position, endPos.position);
@@ -152,7 +151,17 @@ public class TruckController : MonoBehaviour
         }
     }
 
-
+    public void ImportOrder()
+    {
+        for (int a = 0; a < truckInventory.Count; a++)
+        {
+            Product virtualProduct = inventoryManager.productList.ElementAt(a);
+            Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+            truckInventory.Add(newProduct);
+            truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount++;
+        }
+            
+    }
 
     public void ToggleDoors(PortType _type)
     {
