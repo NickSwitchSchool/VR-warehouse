@@ -21,6 +21,11 @@ public class DisplayOrders : MonoBehaviour
         if (newOrderList != null)
         {
             newRowPosOffset = firstRowPosOffset;
+            GameObject[] n_allRows = GameObject.FindGameObjectsWithTag(newRow.tag);
+            foreach (GameObject n_row in n_allRows)
+            {
+                Destroy(n_row);
+            }
             for (int i = 0; i < newOrderList.Count; i++)
             {
                 GameObject n_row = Instantiate(newRow, transform.position + newRowPosOffset, Quaternion.identity);

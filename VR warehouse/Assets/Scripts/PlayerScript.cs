@@ -31,6 +31,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] OVRCameraRig cameraRig;
     [Header("Interaction")]
     RaycastHit interactableCheck;
+    [SerializeField] Material vrButtonIndicator;
+    [SerializeField] Material pcButtonIndicator;
     [Space(20)]
     [Header("Debugging")]
     [SerializeField] TimeToLoadTruck stresser;
@@ -124,7 +126,15 @@ public class PlayerScript : MonoBehaviour
         {
             if (interactableCheck.transform.gameObject.TryGetComponent(out Interactable interactable))
             {
-                interactable.ShowUXButton();
+                if (pcMode)
+                {
+                    interactable.ShowUXButton(pcButtonIndicator);
+                }
+                else
+                {
+                    interactable.ShowUXButton(vrButtonIndicator);
+                }
+
                 if (OVRInput.Get(OVRInput.Button.Two) || Input.GetButtonDown("Use"))
                 {
                     //pickup box
