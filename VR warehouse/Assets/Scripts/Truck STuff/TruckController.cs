@@ -37,6 +37,8 @@ public class TruckController : MonoBehaviour
         if (task == PortType.Export)
         {
             RandomOrder();
+            Debug.Log("Setting Export list");
+            exportManager.AddOrder(exportNeeds);
         }
         if (task == PortType.Import)
         {
@@ -71,11 +73,13 @@ public class TruckController : MonoBehaviour
             if (task == PortType.Export)
             {
                 exportManager.currentTruck = this.gameObject;
-                exportManager.AddOrder(exportNeeds);
+                
+                
             }
         }
         if (onSpot)
         {
+            
             timer = timer - Time.deltaTime;
             if (timer <= 0)
             {
@@ -93,7 +97,6 @@ public class TruckController : MonoBehaviour
                 else if (task == PortType.Export)
                 {
                     exportManager.currentTruck = this.gameObject;
-                    exportManager.AddOrder(exportNeeds);
 
                     truckInventory.Clear();
                     EmptyTruck();

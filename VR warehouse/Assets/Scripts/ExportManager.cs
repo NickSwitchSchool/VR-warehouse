@@ -17,7 +17,15 @@ public class ExportManager : MonoBehaviour
     public GameObject currentTruck;
     public void AddOrder(List<Product> truckList)
     {
-        for(int i = 0; i < truckList.Count; i++)
+        GameObject n_displayScreen = GameObject.FindGameObjectWithTag("DisplayScreen");
+        //replace n_debugList with the list of export products
+        //if statement is to make sure the game doesn't crash if there is no displayscreen in the scene
+        if (n_displayScreen != null)
+        {
+            n_displayScreen.GetComponent<DisplayOrders>().SetList(truckList);
+        }
+        GiveOrders();
+        for (int i = 0; i < truckList.Count; i++)
         {
             Product virtualProduct = truckList[i];
             Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
@@ -49,14 +57,6 @@ public class ExportManager : MonoBehaviour
                 }
             }
         }
-        GameObject n_displayScreen = GameObject.FindGameObjectWithTag("DisplayScreen");
-        //replace n_debugList with the list of export products
-        //if statement is to make sure the game doesn't crash if there is no displayscreen in the scene
-        if (n_displayScreen != null)
-        {
-            n_displayScreen.GetComponent<DisplayOrders>().SetList(exportList);
-        }
-        GiveOrders();
     }
     public void GiveOrders()
     {

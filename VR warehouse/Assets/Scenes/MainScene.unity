@@ -517,6 +517,22 @@ PrefabInstance:
       propertyPath: robots.Array.data[0]
       value: 
       objectReference: {fileID: 481567171}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[0].productName
+      value: Capsule
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[1].productName
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[2].productName
+      value: Cylinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[3].productName
+      value: Sphere
+      objectReference: {fileID: 0}
     - target: {fileID: 418621601591139130, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: m_RootOrder
       value: 3
