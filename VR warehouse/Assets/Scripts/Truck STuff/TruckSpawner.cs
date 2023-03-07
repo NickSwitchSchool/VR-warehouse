@@ -12,8 +12,10 @@ public class TruckSpawner : MonoBehaviour
     public float timeWindow;
     public Transform exportTrans;
     public Transform exportSpawn;
+    public GameObject exportDoor;
     public Transform importTrans;
     public Transform importSpawn;
+    public GameObject importDoor;
 
     public void Start()
     {
@@ -30,6 +32,7 @@ public class TruckSpawner : MonoBehaviour
             spawnedTruck.GetComponent<TruckController>().endPos = importTrans;
             importSpot = true;
             spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
+            spawnedTruck.GetComponent<TruckController>().importDoor = importDoor;
         }
         if(!exportSpot)
         {
@@ -39,6 +42,7 @@ public class TruckSpawner : MonoBehaviour
             spawnedTruck.GetComponent<TruckController>().endPos = exportTrans;
             exportSpot = true;
             spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
+            spawnedTruck.GetComponent<TruckController>().exportDoor = exportDoor;
         }
         
     }
