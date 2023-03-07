@@ -15,9 +15,9 @@ public class DisplayRow : MonoBehaviour
     
     public void CompleteRowInstatiation(int n_amount, string n_name, GameObject n_detailsPrefab, Vector3 n_screenTopLeft, List<Product> n_orderList)
     {
-        amountDisplayText.text = n_amount.ToString();
+        amountDisplayText.text = $"{n_amount.ToString()}x";
         nameDisplayText.text = n_name;
-        detailsPrefab = n_detailsPrefab;
+        //detailsPrefab = n_detailsPrefab;
         screenTopLeft = n_screenTopLeft;
         orderList = n_orderList;
     }

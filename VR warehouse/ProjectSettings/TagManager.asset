@@ -9,6 +9,8 @@ TagManager:
   - Robots
   - Products
   - Box
+  - DisplayScreen
+  - Row
   layers:
   - Default
   - TransparentFX

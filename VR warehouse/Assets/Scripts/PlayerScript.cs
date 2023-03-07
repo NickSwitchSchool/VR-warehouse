@@ -165,18 +165,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void DebugStressRelaxSwitch(bool n_stress)
-    {
-        if (n_stress)
-        {
-            stresser.ActivateStressMode();
-        }
-        else
-        {
-            stresser.DeactivateStressMode();
-        }
-    }
-
     public Transform PlayerTransform()
     {
         return transform;
@@ -195,5 +183,37 @@ public class PlayerScript : MonoBehaviour
     public bool isVr()
     {
         return !pcMode;
+    }
+
+    public void DebugStressRelaxSwitch(bool n_stress)
+    {
+        if (n_stress)
+        {
+            stresser.ActivateStressMode();
+        }
+        else
+        {
+            stresser.DeactivateStressMode();
+        }
+    }
+
+    public void DebugDisplayList()
+    {
+        List<Product> n_debugList = new List<Product> {
+            new Product("Debug1", 1, null, 10),
+            new Product("Debug2", 2, null, 10),
+            new Product("Debug3", 3, null, 10),
+            new Product("Debug4", 2, null, 10),
+            new Product("Debug5", 1, null, 10),
+            new Product("Debug6", 3, null, 10),
+            new Product("Debug7", 1, null, 10)
+        };
+        GameObject n_displayScreen = GameObject.FindGameObjectWithTag("DisplayScreen");
+        //replace n_debugList with the list of export products
+        //if statement is to make sure the game doesn't crash if there is no displayscreen in the scene
+        if (n_displayScreen != null)
+        {
+            n_displayScreen.GetComponent<DisplayOrders>().SetList(n_debugList);
+        }
     }
 }

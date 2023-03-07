@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DisplayOrders : MonoBehaviour
 {
-    List<Product> newOrderList;
-    List<Product> activeOrderList;
+    public List<Product> newOrderList;
+    public List<Product> activeOrderList;
     [SerializeField] GameObject newRow;
-    [SerializeField] Vector3 firstRowPos;
-    Vector3 newRowPos;
+    [SerializeField] Vector3 firstRowPosOffset;
+    Vector3 newRowPosOffset;
     [SerializeField] float distanceBetweenRows;
 
     private void Start()
@@ -20,12 +20,12 @@ public class DisplayOrders : MonoBehaviour
     {
         if (newOrderList != null)
         {
-            newRowPos = firstRowPos;
+            newRowPosOffset = firstRowPosOffset;
             for (int i = 0; i < newOrderList.Count; i++)
             {
-                GameObject n_row = Instantiate(newRow, newRowPos, Quaternion.identity);
-                newRowPos.y -= distanceBetweenRows;
-                n_row.GetComponent<DisplayRow>().CompleteRowInstatiation(newOrderList[i].productAmount, newOrderList[i].productObject.name, null, firstRowPos, newOrderList);
+                GameObject n_row = Instantiate(newRow, transform.position + newRowPosOffset, Quaternion.identity);
+                newRowPosOffset.y -= distanceBetweenRows;
+                n_row.GetComponent<DisplayRow>().CompleteRowInstatiation(newOrderList[i].productAmount, newOrderList[i].productName, newOrderList[i].productObject, firstRowPosOffset, newOrderList);
             }
             activeOrderList = newOrderList;
             newOrderList = null;
