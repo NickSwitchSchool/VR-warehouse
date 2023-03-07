@@ -13,6 +13,7 @@ public class TruckController : MonoBehaviour
     public ExportManager exportManager;
     public List<Product> exportNeeds;
     public List<Product> truckInventory;
+    public List<Product> exportedProducts;
     public enum PortType { Import, Export }
     public PortType task;
     public float timer;
@@ -35,12 +36,18 @@ public class TruckController : MonoBehaviour
         inventoryManager = exportManager.inventoryManager;
         if (task == PortType.Export)
         {
-            RandomOrder(task);
+            RandomOrder();
         }
         if (task == PortType.Import)
         {
+            for (int a = 0; a < inventoryManager.inventory.Count; a++)
+            {
+                if (inventoryManager.inventory[a].productAmount < 3)
+                {
 
-            RandomOrder(task);
+                }
+            }
+
         }
         startTime = Time.time;
         travelTime = Vector3.Distance(startPos.position, endPos.position);
@@ -78,6 +85,10 @@ public class TruckController : MonoBehaviour
                     {
                         timer += 5;
                     }
+                    else
+                    {
+                        EmptyTruck();
+                    }
                 }
                 else
                 {
@@ -88,93 +99,54 @@ public class TruckController : MonoBehaviour
         }
 
     }
-    public void RandomOrder(PortType type)
+    public void RandomOrder()
     {
         for (int i = 0; i < 7; i++)
         {
             Product virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
             Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
 
-
-            switch (type)
+            if (exportNeeds.Count > 0)
             {
-                case PortType.Import:
-                    if (truckInventory.Count > 0)
+                for (int a = 0; a < truckInventory.Count; a++)
+                {
+                    while (truckInventory[a].productObject == newProduct.productObject && truckInventory[a].productAmount == 3)
                     {
-                        bool addProduct = true;
-                        int productInd = 0;
-                        for (int a = 0; a < truckInventory.Count; a++)
-                        {
-                            if (truckInventory[a].productObject == newProduct.productObject)
-                            {
-                                truckInventory[a].productAmount++;
-                                addProduct = false;
-                                break;
-                            }
+                        virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
+                        newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+                    }
+                }
 
-                            else
-                            {
-                                productInd++;
-                            }
-                        }
-                        if (addProduct)
-                        {
-                            truckInventory.Add(newProduct);
-                            truckInventory[productInd].productAmount++;
-                        }
+                bool addProduct = true;
+                int productInd = 0;
+                for (int a = 0; a < exportNeeds.Count; a++)
+                {
+                    if (exportNeeds[a].productObject == newProduct.productObject)
+                    {
+                        exportNeeds[a].productAmount++;
+                        addProduct = false;
+                        break;
                     }
                     else
                     {
-                        truckInventory.Add(newProduct);
-                        truckInventory[0].productAmount++;
+                        productInd++;
                     }
-
-                    break;
-
-                case PortType.Export:
-                    if (exportNeeds.Count > 0)
-                    {
-                        for (int a = 0; a < truckInventory.Count; a++)
-                        {
-                            while (truckInventory[a].productObject == newProduct.productObject && truckInventory[a].productAmount == 3)
-                            {
-                                virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
-                                newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
-                            }
-                        }
-
-                        bool addProduct = true;
-                        int productInd = 0;
-                        for (int a = 0; a < exportNeeds.Count; a++)
-                        {
-                            if (exportNeeds[a].productObject == newProduct.productObject)
-                            { 
-                                exportNeeds[a].productAmount++;
-                                addProduct = false;
-                                break;
-                            }
-                            else
-                            {
-                                productInd++;
-                            }
-                        }
-                        if (addProduct)
-                        {
-                            exportNeeds.Add(newProduct);
-                            exportNeeds[productInd].productAmount++;
-                        }
-                    }
-                    else
-                    {
-                        exportNeeds.Add(newProduct);
-                        exportNeeds[0].productAmount++;
-                    }
-
-                    break;
+                }
+                if (addProduct)
+                {
+                    exportNeeds.Add(newProduct);
+                    exportNeeds[productInd].productAmount++;
+                }
+            }
+            else
+            {
+                exportNeeds.Add(newProduct);
+                exportNeeds[0].productAmount++;
             }
         }
-
     }
+
+
 
     public void ToggleDoors(PortType _type)
     {

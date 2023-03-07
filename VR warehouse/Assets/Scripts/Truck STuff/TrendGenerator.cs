@@ -75,9 +75,6 @@ public class TrendGenerator : MonoBehaviour
 
     private void CheckTrend(List<Product> ChangeList)
     {
-        TotalValue =0;
-
-        
         if(TotalValue > MaxValue)
         {
             int z = 0;
