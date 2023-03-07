@@ -18,7 +18,13 @@ public class Box : MonoBehaviour
 
     private void Update()
     {
-        if (pickedUp)
+        if (pickedUp && playerscript.isVr())
+        {
+            pickedUpTime += Time.deltaTime;
+            transform.position = playerscript.VRHandTransform().position;
+            transform.rotation = playerscript.CamTransform().rotation;
+        }
+        else if (pickedUp)
         {
             pickedUpTime += Time.deltaTime;
             var newPos = playerscript.PlayerTransform().position + playerscript.CamTransform().forward * pickedUpDistance;

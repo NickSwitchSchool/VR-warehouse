@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Toggle VR/pc")]
+    [SerializeField] bool pcMode;
+    [Space(20)]
     [Header("Movement")]
     [SerializeField] float speed;
     Vector3 movement;
@@ -15,7 +18,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] Material illigalTPPos;
     [Space(20)]
     [Header("Camera")]
-    [SerializeField] bool testWithoutVR;
     Vector3 rotation;
     Vector3 camrotation;
     float mouseVertical;
@@ -72,7 +74,7 @@ public class PlayerScript : MonoBehaviour
         cam.transform.rotation = headsetRotation;
 
         //camera without VR
-        if (testWithoutVR)
+        if (pcMode)
         {
             rotation.y += Input.GetAxis("Mouse X") * sensitivity;
             transform.eulerAngles = rotation;
@@ -163,16 +165,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public Transform PlayerTransform()
-    {
-        return transform;
-    }
-
-    public Transform CamTransform()
-    {
-        return cam.transform;
-    }
-
     public void DebugStressRelaxSwitch(bool n_stress)
     {
         if (n_stress)
@@ -183,5 +175,25 @@ public class PlayerScript : MonoBehaviour
         {
             stresser.DeactivateStressMode();
         }
+    }
+
+    public Transform PlayerTransform()
+    {
+        return transform;
+    }
+
+    public Transform CamTransform()
+    {
+        return cam.transform;
+    }
+
+    public Transform VRHandTransform()
+    {
+        return rightHand.transform;
+    }
+
+    public bool isVr()
+    {
+        return !pcMode;
     }
 }
