@@ -59,4 +59,12 @@ public class Box : MonoBehaviour
             PlaceDownBox();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<PalletCreation>(out PalletCreation n_pallet))
+        {
+            n_pallet.AddItemToPallet(this.gameObject, n_pallet.IsItemRequested(gameObject.tag));
+        }
+    }
 }

@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7094340969976142931, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.505
+      value: 18.66899
       objectReference: {fileID: 0}
     - target: {fileID: 7094340969976142931, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1439536
+      value: 0.00000008940697
       objectReference: {fileID: 0}
     - target: {fileID: 7094340969976142931, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.08
+      value: 12.3641815
       objectReference: {fileID: 0}
     - target: {fileID: 7094340969976142931, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7584054259727845097, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
       propertyPath: m_Name
-      value: PalletDirt Variant
+      value: GreeneryA
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1077173188345414002, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
@@ -76,6 +76,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.4785396, z: 1.2}
   m_Center: {x: 0, y: 0.2392698, z: 0}
+--- !u!114 &6100551464118819205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082175683875098393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb829b7254bb4f94b8f005b4aa1068ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  palletName: GreeneryA
+  needsTags:
+  - DirtBag
+  - DirtBag
+  - DirtBag
+  - DirtBag
+  - DirtBag
+  - DirtBag
+  boxes:
+  - {fileID: 5478321029628818806}
+  - {fileID: 3603942383849120370}
+  - {fileID: 5056202811932272751}
+  - {fileID: 2182770252228846628}
+  - {fileID: 4455620495341018623}
+  - {fileID: 712180926854163830}
+  packedBoxes: []
+  completeProductPrefab: {fileID: 8823443363893040011, guid: 2653fd9fced7d1d4296b18143f89cdf9, type: 3}
 --- !u!4 &7566929106759620003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7094340969976142931, guid: 1add6a9d14b81c340ab971a451828320, type: 3}
@@ -91,6 +120,10 @@ PrefabInstance:
     - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_Name
       value: DirtBag (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910626698433794647, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_RootOrder
@@ -138,7 +171,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8542158120021338953, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+    - {fileID: 4068846515717448016, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+--- !u!1 &5056202811932272751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+  m_PrefabInstance: {fileID: 2353372793856565378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3063862053656444315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,6 +188,10 @@ PrefabInstance:
     - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_Name
       value: DirtBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910626698433794647, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_RootOrder
@@ -196,7 +239,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8542158120021338953, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+    - {fileID: 4068846515717448016, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+--- !u!1 &5478321029628818806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+  m_PrefabInstance: {fileID: 3063862053656444315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6088909841569639071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_Name
       value: DirtBag (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910626698433794647, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_RootOrder
@@ -254,7 +307,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8542158120021338953, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+    - {fileID: 4068846515717448016, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+--- !u!1 &3603942383849120370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+  m_PrefabInstance: {fileID: 6088909841569639071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6581565032204473618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -265,6 +324,10 @@ PrefabInstance:
     - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_Name
       value: DirtBag (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910626698433794647, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_RootOrder
@@ -312,7 +375,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8542158120021338953, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+    - {fileID: 4068846515717448016, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+--- !u!1 &4455620495341018623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+  m_PrefabInstance: {fileID: 6581565032204473618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8025921938656142747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,6 +392,10 @@ PrefabInstance:
     - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_Name
       value: DirtBag (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910626698433794647, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_RootOrder
@@ -370,7 +443,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8542158120021338953, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+    - {fileID: 4068846515717448016, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+--- !u!1 &712180926854163830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+  m_PrefabInstance: {fileID: 8025921938656142747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8703523247306419401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,6 +460,10 @@ PrefabInstance:
     - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_Name
       value: DirtBag (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910626698433794647, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
       propertyPath: m_RootOrder
@@ -428,4 +511,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8542158120021338953, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+    - {fileID: 4068846515717448016, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+--- !u!1 &2182770252228846628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7386996017770416365, guid: fce6ac913fc02ec4eab9b2b096b00765, type: 3}
+  m_PrefabInstance: {fileID: 8703523247306419401}
+  m_PrefabAsset: {fileID: 0}

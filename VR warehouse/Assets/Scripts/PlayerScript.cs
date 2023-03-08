@@ -138,9 +138,9 @@ public class PlayerScript : MonoBehaviour
                 if (OVRInput.Get(OVRInput.Button.Two) || Input.GetButtonDown("Use"))
                 {
                     //pickup box
-                    if (interactable.gameObject.CompareTag("Box"))
+                    if (interactable.gameObject.TryGetComponent<Box>(out Box n_box))
                     {
-                        interactable.GetComponent<Box>().PickUpBox(this);
+                        n_box.PickUpBox(this);
                     }
 
                     //implement more interactions here
