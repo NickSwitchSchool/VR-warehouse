@@ -32,39 +32,47 @@ public class TrendGenerator : MonoBehaviour
     }
     public void ChangeTrend(float value)
     {
+        //check if value is not to high
         Debug.Log("Changing Trends");
-        if (value < 99)
+        if (value < MaxValue - maxChange)
         {
+            //picking a random product out of the list
             int rndProduct = Random.Range(0, products.Count);
             int index = rndProduct;
 
             if (products[index].trendWeight + value < MaxValue)
             {
                 products[index].trendWeight = products[index].trendWeight + value;
-                List<Product> ChangeList = new List<Product>(products);
-
-                ChangeList.Remove(products[index]);
+                List<Product> changeList = new List<Product>(products);
+                List<Product> tempList = new List<Product>();
+                
+                //removing the changed product out of the list
+                changeList.Remove(products[index]);
 
                 int count = 0;
                 float newValue = 0;
 
-                for (int y = 0; y < ChangeList.Count; y++)
+                //if the value of other products become 0 
+                for (int y = 0; y < changeList.Count; y++)
                 {
-                    if ((ChangeList[y].trendWeight - value) < 0)
+                    if ((changeList[y].trendWeight - value) < 10)
                     {
-                        newValue = value - ChangeList[y].trendWeight;
-                        ChangeList[y].trendWeight = 0;
+                        newValue = value - changeList[y].trendWeight;
+                        changeList[y].trendWeight = 10;
+                        tempList.Add(changeList[y]);
+                        changeList.RemoveAt(y);
                         count++;
                     }
                     else
                     {
-                        ChangeList[y].trendWeight -= (value + newValue) / (ChangeList.Count - count);
+                        changeList[y].trendWeight -= Mathf.Round((value + newValue) / changeList.Count);
+                        newValue = 0;
                     }
 
                 }
 
-                CheckTrend(ChangeList);
-               
+                CheckTrend(changeList);
+                CheckTotal(changeList);
 
                 print("done");
                 changeTrend = false;
@@ -80,7 +88,7 @@ public class TrendGenerator : MonoBehaviour
             int z = 0;
            while(TotalValue > MaxValue)
            {
-                if ((ChangeList[z].trendWeight - 1) > 0)
+                if ((ChangeList[z].trendWeight - 1) > 10)
                 {
                     ChangeList[z].trendWeight--;
                 }
@@ -97,7 +105,7 @@ public class TrendGenerator : MonoBehaviour
             int z = 0;
             while(TotalValue < MaxValue)
             {
-                if ((ChangeList[z].trendWeight + 1) < 100)
+                if ((ChangeList[z].trendWeight + 1) < MaxValue)
                 {
                     ChangeList[z].trendWeight++;
                 }
@@ -119,5 +127,10 @@ public class TrendGenerator : MonoBehaviour
             currentValue += products[x].trendWeight;
         }
         TotalValue = currentValue;
+
+        if (TotalValue != MaxValue)
+        {
+            CheckTrend(ChangeList);
+        }
     }
 }

@@ -56,6 +56,7 @@ public class TruckController : MonoBehaviour
     }
     public void Update()
     {
+        //check if truck is on the spot it needs to be
         if (!onSpot)
         {
             float distCovered = (Time.time - startTime) * speed;
@@ -64,6 +65,8 @@ public class TruckController : MonoBehaviour
 
             gameObject.transform.position = Vector3.Lerp(startPos.position, endPos.position, fracComplete);
         }
+        //if the truck has the correct position tell it its onSpot and open the doors
+        //also tell the export manager what truck is the export truck
         if (gameObject.transform.position == endPos.position && !onSpot)
         {
             onSpot = true;
@@ -90,7 +93,7 @@ public class TruckController : MonoBehaviour
                     }
                     else
                     {
-                        EmptyTruck();
+                        StartCoroutine(CloseDoor());
                     }
                 }
                 else if (task == PortType.Export)
@@ -98,7 +101,7 @@ public class TruckController : MonoBehaviour
                     exportManager.currentTruck = this.gameObject;
 
                     truckInventory.Clear();
-                    EmptyTruck();
+                    StartCoroutine(CloseDoor());
                 }
             }
         }
@@ -176,16 +179,36 @@ public class TruckController : MonoBehaviour
             //exportDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
         }
     }
-    public void EmptyTruck()
+    public void EmptyTruck(Product newProduct)
     {
+
         if (truckInventory.Count <= 0 && onSpot)
         {
             StartCoroutine(CloseDoor());
         }
     }
 
-    public void FillTruck()
+    public void FillTruck(Product _newProduct)
     {
+        Product virtualProduct = _newProduct;
+        Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+        if(exportNeeds.Contains(newProduct))
+        {
+            exportNeeds.ElementAt(exportNeeds.IndexOf(newProduct)).productAmount--;
+            if (exportNeeds.ElementAt(exportNeeds.IndexOf(newProduct)).productAmount <= 0)
+            {
+                exportNeeds.Remove(newProduct);
+            }
+        }
+        if(truckInventory.Contains(newProduct))
+        {
+            truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount++;
+        }
+        else
+        {
+            truckInventory.Add(_newProduct);
+            truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount++;
+        }
         if (exportNeeds.Count <= 0 && onSpot)
         {
             StartCoroutine(CloseDoor());
