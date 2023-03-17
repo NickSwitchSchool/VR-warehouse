@@ -258,7 +258,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8104059839944292512, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8104059839944292512, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2692,7 +2692,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3202,6 +3202,51 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2631075400102704578, guid: e78c87d5f3445e943a084c1b5fafac69, type: 3}
   m_PrefabInstance: {fileID: 2089809439}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2089809442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089809440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99d3d1f0a6973c49aea2d24f6bf23d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2089809443}
+  gettingProduct: 0
+  holdingProduct:
+    productName: 
+    productAmount: 0
+    productObject: {fileID: 0}
+    trendWeight: 0
+  inventoryManager: {fileID: 1621400842}
+  orderList: []
+  currentOrder: 0
+  target: {fileID: 0}
+--- !u!195 &2089809443
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089809440}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &2124980522 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8104059839950917998, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
