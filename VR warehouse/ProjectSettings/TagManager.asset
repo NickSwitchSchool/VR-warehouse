@@ -12,6 +12,9 @@ TagManager:
   - DisplayScreen
   - Row
   - DirtBag
+  - PCmouse
+  - Keyboards
+  - MusicBoxes
   layers:
   - Default
   - TransparentFX
