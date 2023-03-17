@@ -175,7 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: []
-  pickedUpDistance: 1.5
+  pickedUpDistancePC: 1.5
+  pickedUpDistanceVR: 0.7
 --- !u!114 &3671731850043922397
 MonoBehaviour:
   m_ObjectHideFlags: 0

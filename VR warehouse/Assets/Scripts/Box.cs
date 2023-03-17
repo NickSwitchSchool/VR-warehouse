@@ -7,7 +7,8 @@ public class Box : MonoBehaviour
     [SerializeField] List<GameObject> content;
     Rigidbody rb;
     PlayerScript playerscript;
-    [SerializeField] float pickedUpDistance;
+    [SerializeField] float pickedUpDistancePC;
+    [SerializeField] float pickedUpDistanceVR;
     float pickedUpTime;
     bool pickedUp;
 
@@ -21,13 +22,13 @@ public class Box : MonoBehaviour
         if (pickedUp && playerscript.isVr())
         {
             pickedUpTime += Time.deltaTime;
-            transform.position = playerscript.VRHandTransform().position;
+            transform.position = playerscript.VRHandTransform().position + playerscript.VRHandTransform().right * pickedUpDistanceVR;
             transform.rotation = playerscript.CamTransform().rotation;
         }
         else if (pickedUp)
         {
             pickedUpTime += Time.deltaTime;
-            var newPos = playerscript.PlayerTransform().position + playerscript.CamTransform().forward * pickedUpDistance;
+            var newPos = playerscript.PlayerTransform().position + playerscript.CamTransform().forward * pickedUpDistancePC;
             transform.position = newPos;
             transform.rotation = playerscript.CamTransform().rotation;
         }

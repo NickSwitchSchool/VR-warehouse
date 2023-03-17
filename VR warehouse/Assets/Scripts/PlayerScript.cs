@@ -98,12 +98,13 @@ public class PlayerScript : MonoBehaviour
         }
 
         //teleport
-        rightHand.transform.localPosition = cameraRig.rightHandAnchor.position + new Vector3(0, .9f, 0) + cameraRig.transform.forward * 0.2f;
-        rightHand.transform.localRotation = cameraRig.rightHandAnchor.rotation;
+        rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
+        rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
+        rightHand.transform.Rotate(0, -90, 0);
         if (rightJoystick.y >= .5f)
         {
             beam.SetActive(true);
-            if (Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out tpCheck, 100))
+            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
             {
                 beam.GetComponent<MeshRenderer>().material = legitTPPos;
             }
@@ -115,7 +116,7 @@ public class PlayerScript : MonoBehaviour
         else if (rightJoystick.y < .5f && beam.activeSelf)
         {
             beam.SetActive(false);
-            if (Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out tpCheck, 100))
+            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
             {
                 transform.position = tpCheck.point + new Vector3(0, .3f, 0);
             }
@@ -135,7 +136,7 @@ public class PlayerScript : MonoBehaviour
                     interactable.ShowUXButton(vrButtonIndicator);
                 }
 
-                if (OVRInput.Get(OVRInput.Button.Two) || Input.GetButtonDown("Use"))
+                if (Input.GetButtonDown("Use"))
                 {
                     //pickup box
                     if (interactable.gameObject.TryGetComponent<Box>(out Box n_box))
