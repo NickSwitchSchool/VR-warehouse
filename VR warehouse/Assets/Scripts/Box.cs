@@ -11,10 +11,16 @@ public class Box : MonoBehaviour
     [SerializeField] float pickedUpDistanceVR;
     float pickedUpTime;
     bool pickedUp;
+    Animator anim;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        TryGetComponent<Animator>(out anim);
+        if (anim != null)
+        {
+            anim.SetBool("Open", false);
+        }
     }
 
     private void Update()
