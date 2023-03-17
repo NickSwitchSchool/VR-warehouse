@@ -516,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: robots.Array.data[0]
       value: 
-      objectReference: {fileID: 481567171}
+      objectReference: {fileID: 2089809440}
     - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: productList.Array.data[0].productName
       value: Capsule
@@ -817,11 +817,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c52b24e55f1a0244f9374b13b4e62685, type: 3}
---- !u!1 &481567171 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3145522937215089174, guid: e78c87d5f3445e943a084c1b5fafac69, type: 3}
-  m_PrefabInstance: {fileID: 2089809439}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &494793109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3202,6 +3197,11 @@ PrefabInstance:
       objectReference: {fileID: 1621400842}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78c87d5f3445e943a084c1b5fafac69, type: 3}
+--- !u!1 &2089809440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2631075400102704578, guid: e78c87d5f3445e943a084c1b5fafac69, type: 3}
+  m_PrefabInstance: {fileID: 2089809439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2124980522 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8104059839950917998, guid: cf0b7c417d3aed8459c3805382178abf, type: 3}
