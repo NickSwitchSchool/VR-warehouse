@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -40,9 +41,17 @@ public class PlayerScript : MonoBehaviour
     [Header("Other")]
     bool paused;
 
+    [Header("ChatGPT stuff")]
+    private InputDevice rightHandDevice;
+    private Vector3 initialOffset;
+
     private void Start()
     {
         playerRB = GetComponent<Rigidbody>();
+
+        //chatgpt stuff
+        rightHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        initialOffset = rightHand.transform.position - InputTracking.GetLocalPosition(XRNode.Head);
     }
     private void Update()
     {
@@ -98,9 +107,9 @@ public class PlayerScript : MonoBehaviour
         }
 
         //teleport
-        rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
-        rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
-        rightHand.transform.Rotate(0, -90, 0);
+        //rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
+        //rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
+        //rightHand.transform.Rotate(0, -90, 0);
         if (rightJoystick.y >= .5f)
         {
             beam.SetActive(true);
@@ -147,6 +156,22 @@ public class PlayerScript : MonoBehaviour
                     //implement more interactions here
                 }
             }
+        }
+
+        //chatgpt stuff
+        Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
+        Quaternion headRotation = InputTracking.GetLocalRotation(XRNode.Head);
+
+        if (rightHandDevice.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 handPosition))
+        {
+            Vector3 newHandPosition = headRotation * (handPosition - headPosition) + headPosition + initialOffset;
+            rightHand.transform.position = newHandPosition;
+        }
+
+        if (rightHandDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion handRotation))
+        {
+            Quaternion newHandRotation = handRotation * Quaternion.Inverse(headRotation);
+            rightHand.transform.rotation = newHandRotation;
         }
     }
 

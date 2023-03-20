@@ -12,6 +12,12 @@ public class Box : MonoBehaviour
     float pickedUpTime;
     bool pickedUp;
     Animator anim;
+    public enum PortType { 
+        Open, 
+        Closing, 
+        Closed
+    }
+    public PortType boxState;
 
     private void Start()
     {
@@ -19,7 +25,21 @@ public class Box : MonoBehaviour
         TryGetComponent<Animator>(out anim);
         if (anim != null)
         {
-            anim.SetBool("Open", false);
+            if (boxState == PortType.Closing)
+            {
+                anim.SetBool("Open", false);
+                anim.speed = 1;
+            }
+            else if (boxState == PortType.Closed)
+            {
+                anim.SetBool("Open", false);
+                anim.speed = 472005;
+            }
+            else
+            {
+                anim.SetBool("Open", true);
+                anim.speed = 1;
+            }
         }
     }
 
