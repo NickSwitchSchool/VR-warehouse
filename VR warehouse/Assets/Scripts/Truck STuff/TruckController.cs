@@ -20,6 +20,7 @@ public class TruckController : MonoBehaviour
     public float timer;
     public float timeWindow;
 
+    private bool gaveOrder;
     public bool onSpot;
     private float travelTime;
     private float startTime;
@@ -32,6 +33,7 @@ public class TruckController : MonoBehaviour
     public GameObject exportDoor;
     public void Start()
     {
+        gaveOrder = false;
         exportManager = GameObject.Find("ExportBox").GetComponent<ExportManager>();
         inventoryManager = exportManager.inventoryManager;
         if (task == PortType.Export)
@@ -116,9 +118,10 @@ public class TruckController : MonoBehaviour
         //when the truck is on its spot check what its task is and execute code accordingly
         if (onSpot)
         {
-            if (task == PortType.Export)
+            if (task == PortType.Export && gaveOrder == false)
             {
                 exportManager.AddOrder(exportNeeds);
+                gaveOrder = true;
             }
             timer = timer - Time.deltaTime;
             if (timer <= 0)
