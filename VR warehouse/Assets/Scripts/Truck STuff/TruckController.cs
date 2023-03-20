@@ -11,8 +11,9 @@ public class TruckController : MonoBehaviour
 {
     public InventoryManager inventoryManager;
     public ExportManager exportManager;
+    public TruckInventory truckInventory;
     public List<Product> exportNeeds;
-    public List<Product> truckInventory;
+    public List<Product> truckList;
     public List<Product> exportedProducts;
     public enum PortType { Import, Export }
     public PortType task;
@@ -23,7 +24,6 @@ public class TruckController : MonoBehaviour
     private float travelTime;
     private float startTime;
     public float speed;
-
     public Transform startPos;
     public Transform endPos;
 
@@ -38,16 +38,51 @@ public class TruckController : MonoBehaviour
         {
             RandomOrder();
             Debug.Log("Setting Export list");
-            exportManager.AddOrder(exportNeeds);
+
         }
         if (task == PortType.Import)
         {
-            for (int a = 0; a < inventoryManager.productList.Count; a++)
+            //when there is at least 1 product in inventory fill it with the missing products
+            if (inventoryManager.inventory.Count > 0)
             {
-                Product virtualProduct = inventoryManager.productList.ElementAt(a);
-                Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
-                truckInventory.Add(newProduct);
-                truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount = 3;
+                for (int a = 0; a < inventoryManager.productList.Count; a++)
+                {
+                    Product virtualProduct = inventoryManager.productList.ElementAt(a);
+                    Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+                    if (inventoryManager.inventory.ElementAt(inventoryManager.inventory.IndexOf(newProduct)).productAmount <= 2)
+                    {
+                        for (int b = 0; b < inventoryManager.inventory.ElementAt(inventoryManager.inventory.IndexOf(newProduct)).productAmount; b++)
+                        {
+                            if (!truckList.Contains(newProduct))
+                            {
+                                truckList.Add(newProduct);
+                                truckList.ElementAt(truckList.IndexOf(newProduct)).productAmount++;
+                            }
+                            else
+                            {
+                                truckList.ElementAt(truckList.IndexOf(newProduct)).productAmount++;
+                            }
+                            truckInventory.UpdateInventory(newProduct);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                int count = 0;
+                if(count < 7)
+                {
+                    for (int a = 0; a < inventoryManager.productList.Count; a++)
+                    {
+                        Product virtualProduct = inventoryManager.productList.ElementAt(a);
+                        Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
+
+                        truckList.Add(newProduct);
+                        truckList.ElementAt(truckList.IndexOf(newProduct)).productAmount++;
+                        truckInventory.UpdateInventory(newProduct);
+                        count++;
+                    }
+                }
             }
         }
         startTime = Time.time;
@@ -75,19 +110,22 @@ public class TruckController : MonoBehaviour
             if (task == PortType.Export)
             {
                 exportManager.currentTruck = this.gameObject;
-                
-                
             }
         }
+
+        //when the truck is on its spot check what its task is and execute code accordingly
         if (onSpot)
         {
-            
+            if (task == PortType.Export)
+            {
+                exportManager.AddOrder(exportNeeds);
+            }
             timer = timer - Time.deltaTime;
             if (timer <= 0)
             {
                 if (task == PortType.Import)
                 {
-                    if (truckInventory.Count > 0)
+                    if (truckList.Count > 0)
                     {
                         timer += 5;
                     }
@@ -100,7 +138,7 @@ public class TruckController : MonoBehaviour
                 {
                     exportManager.currentTruck = this.gameObject;
 
-                    truckInventory.Clear();
+                    truckList.Clear();
                     StartCoroutine(CloseDoor());
                 }
             }
@@ -116,9 +154,9 @@ public class TruckController : MonoBehaviour
 
             if (exportNeeds.Count > 0)
             {
-                for (int a = 0; a < truckInventory.Count; a++)
+                for (int a = 0; a < truckList.Count; a++)
                 {
-                    while (truckInventory[a].productObject == newProduct.productObject && truckInventory[a].productAmount == 3)
+                    while (truckList[a].productObject == newProduct.productObject && truckList[a].productAmount == 3)
                     {
                         virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
                         newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
@@ -156,14 +194,14 @@ public class TruckController : MonoBehaviour
 
     public void ImportOrder()
     {
-        for (int a = 0; a < truckInventory.Count; a++)
+        for (int a = 0; a < truckList.Count; a++)
         {
             Product virtualProduct = inventoryManager.productList.ElementAt(a);
             Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
-            truckInventory.Add(newProduct);
-            truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount++;
+            truckList.Add(newProduct);
+            truckList.ElementAt(truckList.IndexOf(newProduct)).productAmount++;
         }
-            
+
     }
 
     public void ToggleDoors(PortType _type)
@@ -182,7 +220,7 @@ public class TruckController : MonoBehaviour
     public void EmptyTruck(Product newProduct)
     {
 
-        if (truckInventory.Count <= 0 && onSpot)
+        if (truckList.Count <= 0 && onSpot)
         {
             StartCoroutine(CloseDoor());
         }
@@ -192,7 +230,7 @@ public class TruckController : MonoBehaviour
     {
         Product virtualProduct = _newProduct;
         Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
-        if(exportNeeds.Contains(newProduct))
+        if (exportNeeds.Contains(newProduct))
         {
             exportNeeds.ElementAt(exportNeeds.IndexOf(newProduct)).productAmount--;
             if (exportNeeds.ElementAt(exportNeeds.IndexOf(newProduct)).productAmount <= 0)
@@ -200,15 +238,16 @@ public class TruckController : MonoBehaviour
                 exportNeeds.Remove(newProduct);
             }
         }
-        if(truckInventory.Contains(newProduct))
+        if (truckList.Contains(newProduct))
         {
-            truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount++;
+            truckList.ElementAt(truckList.IndexOf(newProduct)).productAmount++;
         }
         else
         {
-            truckInventory.Add(_newProduct);
-            truckInventory.ElementAt(truckInventory.IndexOf(newProduct)).productAmount++;
+            truckList.Add(_newProduct);
+            truckList.ElementAt(truckList.IndexOf(newProduct)).productAmount++;
         }
+        truckInventory.UpdateInventory(_newProduct);
         if (exportNeeds.Count <= 0 && onSpot)
         {
             StartCoroutine(CloseDoor());

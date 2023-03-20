@@ -24,39 +24,9 @@ public class ExportManager : MonoBehaviour
         {
             n_displayScreen.GetComponent<DisplayOrders>().SetList(truckList);
         }
+        exportList = truckList;
+        
         GiveOrders();
-        for (int i = 0; i < truckList.Count; i++)
-        {
-            Product virtualProduct = truckList[i];
-            Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
-            //check with InventoryManager if product is present and add it to order list
-            for (int x = 0; x < inventoryManager.inventory.Count; x++)
-            {
-                if (inventoryManager.inventory[x].productObject == newProduct.productObject)
-                {
-                    bool addProduct = true;
-                    int productInd = 0;
-                    for (int a = 0; a < exportList.Count; a++)
-                    {
-                        if (exportList[a].productObject == newProduct.productObject)
-                        {
-                            exportList[a].productAmount++;
-                            addProduct = false;
-                            break;
-                        }
-                        else
-                        {
-                            productInd++;
-                        }
-                    }
-                    if (addProduct)
-                    {
-                        exportList.Add(newProduct);
-                        exportList[productInd].productAmount++;
-                    }
-                }
-            }
-        }
     }
     public void GiveOrders()
     {
@@ -72,10 +42,6 @@ public class ExportManager : MonoBehaviour
                 break;
             }
            
-        }
-        if (!robotFound)
-        {
-            GiveOrders();
         }
         
     }

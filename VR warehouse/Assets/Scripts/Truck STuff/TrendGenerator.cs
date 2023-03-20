@@ -55,10 +55,10 @@ public class TrendGenerator : MonoBehaviour
                 //if the value of other products become 0 
                 for (int y = 0; y < changeList.Count; y++)
                 {
-                    if ((changeList[y].trendWeight - value) < 10)
+                    if ((changeList[y].trendWeight - value) < 5)
                     {
                         newValue = value - changeList[y].trendWeight;
-                        changeList[y].trendWeight = 10;
+                        changeList[y].trendWeight = 5;
                         tempList.Add(changeList[y]);
                         changeList.RemoveAt(y);
                         count++;
@@ -88,7 +88,7 @@ public class TrendGenerator : MonoBehaviour
             int z = 0;
            while(TotalValue > MaxValue)
            {
-                if ((ChangeList[z].trendWeight - 1) > 10)
+                if ((ChangeList[z].trendWeight - 1) > 5)
                 {
                     ChangeList[z].trendWeight--;
                 }

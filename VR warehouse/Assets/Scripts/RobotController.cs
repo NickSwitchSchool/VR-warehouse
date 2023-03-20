@@ -57,12 +57,14 @@ public class RobotController : MonoBehaviour
             holdingProduct.productObject.transform.parent = this.transform.GetChild(0);
             holdingProduct.productObject.transform.position = this.transform.GetChild(0).position;
             holdingProduct.productObject.transform.rotation = this.transform.GetChild(0).rotation;
-
+            this.GetComponent<Animator>().SetBool("WalkB", true);
 
             agent.SetDestination(inventoryManager.exportBox.transform.position);
         }
         if (collision.gameObject == inventoryManager.exportBox)
         {
+            this.GetComponent<Animator>().SetBool("WalkB", false);
+            this.GetComponent<Animator>().SetTrigger("DropBox");
             collision.gameObject.GetComponent<ExportManager>().RemoveProduct(holdingProduct);
             GetProduct();
         }
