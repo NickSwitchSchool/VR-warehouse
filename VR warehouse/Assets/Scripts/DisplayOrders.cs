@@ -10,6 +10,7 @@ public class DisplayOrders : MonoBehaviour
     [SerializeField] Vector3 firstRowPosOffset;
     Vector3 newRowPosOffset;
     [SerializeField] float distanceBetweenRows;
+    [SerializeField] Transform[] productDebugSpawnLocations;
 
     private void Start()
     {
@@ -31,6 +32,9 @@ public class DisplayOrders : MonoBehaviour
                 GameObject n_row = Instantiate(newRow, transform.position + newRowPosOffset, Quaternion.identity);
                 newRowPosOffset.y -= distanceBetweenRows;
                 n_row.GetComponent<DisplayRow>().CompleteRowInstatiation(newOrderList[i].productAmount, newOrderList[i].productName, newOrderList[i].productObject, firstRowPosOffset, newOrderList);
+
+                //instantiate products for presentation
+
             }
             activeOrderList = newOrderList;
             newOrderList = null;

@@ -509,14 +509,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 418621600413382664, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621600413382664, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 418621601591139128, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: m_Name
       value: InventoryManager
       objectReference: {fileID: 0}
     - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: inventory.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: robots.Array.data[0]
       value: 
       objectReference: {fileID: 2089809440}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[0].productName
+      value: Dirtbags
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[1].productName
+      value: Keyboards
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[2].productName
+      value: Laptops
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[3].productName
+      value: PC mouses
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[0].productObject
+      value: 
+      objectReference: {fileID: 8823443363893040011, guid: 2653fd9fced7d1d4296b18143f89cdf9, type: 3}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[1].productObject
+      value: 
+      objectReference: {fileID: 4266721678697256498, guid: e2f44a180aae045478e425013e25d231, type: 3}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[2].productObject
+      value: 
+      objectReference: {fileID: 15112046268856893, guid: d7e75e25c6f974042b8638dfe821192f, type: 3}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: productList.Array.data[3].productObject
+      value: 
+      objectReference: {fileID: 1865188929791803479, guid: b15753f2cc6d7ad49bdb8b6df9e6f87a, type: 3}
     - target: {fileID: 418621601591139130, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -561,7 +609,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 418621601803776801, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601803776801, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601803776804, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.04
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 418621600413382678, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+    - {fileID: 418621600413382677, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+    - {fileID: 418621601803776802, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+    - {fileID: 418621601803776803, guid: 26cc079d009f16741b64f733b9337464, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 26cc079d009f16741b64f733b9337464, type: 3}
 --- !u!1 &286602519 stripped
 GameObject:
