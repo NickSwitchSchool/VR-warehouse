@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pallet : MonoBehaviour
 {
     [SerializeField] List<GameObject> boxes;
+    public GameObject emptyPalletVariation;
     [SerializeField] GameObject strap;
 
     public void Strap()
