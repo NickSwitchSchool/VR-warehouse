@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 8944906400386045238, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
   - {fileID: 8944906400386045238, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
   - {fileID: 8944906400386045238, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
+  emptyPalletVariation: {fileID: 4441953465840406967, guid: 1031d04ff42f8db46bff6e24c2a82bf3, type: 3}
   strap: {fileID: 0}
 --- !u!1001 &4750110788341697047
 PrefabInstance:

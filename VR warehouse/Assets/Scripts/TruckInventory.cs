@@ -29,7 +29,7 @@ public class TruckInventory : MonoBehaviour
             {
                 if (inventorySpaces[x, y] == false)
                 {
-                    productPosistion.x += -0.45f + (0.45f * x);
+                    productPosistion.x += -0.45f + (0.9f * x);
                     productPosistion.z += -1.5f + (1.5f * y);
                     productPosistion.y += -1.4f;
                     productObject.transform.position = productPosistion;

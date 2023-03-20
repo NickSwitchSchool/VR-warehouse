@@ -115,6 +115,7 @@ MonoBehaviour:
   boxes:
   - {fileID: 1712730651697357238, guid: fae0e5cf4fcdbfd47a4387b6fd4337f7, type: 3}
   - {fileID: 1712730651697357238, guid: fae0e5cf4fcdbfd47a4387b6fd4337f7, type: 3}
+  emptyPalletVariation: {fileID: 8277974885495337663, guid: 0f707bc9062de764184ff2e482e26be3, type: 3}
   strap: {fileID: 0}
 --- !u!1001 &4476426311958238187
 PrefabInstance:
