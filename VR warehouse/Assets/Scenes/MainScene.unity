@@ -3232,6 +3232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingBot
       objectReference: {fileID: 0}
+    - target: {fileID: 3443183946355158904, guid: e78c87d5f3445e943a084c1b5fafac69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.56
+      objectReference: {fileID: 0}
     - target: {fileID: 8131060402003355463, guid: e78c87d5f3445e943a084c1b5fafac69, type: 3}
       propertyPath: inventoryManager
       value: 

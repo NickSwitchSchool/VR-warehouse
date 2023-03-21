@@ -25,8 +25,6 @@ public class ExportManager : MonoBehaviour
             n_displayScreen.GetComponent<DisplayOrders>().SetList(truckList);
         }
         exportList = truckList;
-        
-        GiveOrders();
     }
     public void GiveOrders()
     {
