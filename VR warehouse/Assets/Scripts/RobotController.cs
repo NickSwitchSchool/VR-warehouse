@@ -43,7 +43,10 @@ public class RobotController : MonoBehaviour
         currentProduct = target.gameObject;
         
         agent.SetDestination(target.position);
-        gettingProduct = true;
+        if(target != null)
+        {
+            gettingProduct = true;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
