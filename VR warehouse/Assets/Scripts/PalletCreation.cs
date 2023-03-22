@@ -18,7 +18,16 @@ public class PalletCreation : MonoBehaviour
             {
                 Destroy(packedBox);
             }
-            Instantiate(completeProductPrefab, transform.position, transform.rotation);
+            GameObject n_productPrefab = Instantiate(completeProductPrefab, transform.position, transform.rotation);
+
+            GameObject n_displayScreen = GameObject.FindGameObjectWithTag("DisplayScreen");
+            //replace n_debugList with the list of export products
+            //if statement is to make sure the game doesn't crash if there is no displayscreen in the scene
+            if (n_displayScreen != null)
+            {
+                n_displayScreen.GetComponent<DisplayOrders>().spawnedDebugs.Add(n_productPrefab);
+            }
+
             Destroy(gameObject);
         }
     }

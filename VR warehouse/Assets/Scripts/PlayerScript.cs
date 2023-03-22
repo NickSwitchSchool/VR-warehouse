@@ -49,9 +49,9 @@ public class PlayerScript : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody>();
 
-        //chatgpt stuff
-        rightHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        initialOffset = rightHand.transform.position - InputTracking.GetLocalPosition(XRNode.Head);
+        ////chatgpt stuff
+        //rightHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        //initialOffset = rightHand.transform.position - InputTracking.GetLocalPosition(XRNode.Head);
     }
     private void Update()
     {
@@ -72,17 +72,17 @@ public class PlayerScript : MonoBehaviour
         }
 
         //camera
-        Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
-        if (rightJoystick.x >= .5f)
-        {
-            QuickRotate(quickRotateDegrees);
-        }
-        else if (rightJoystick.x <= -.5f)
-        {
-            QuickRotate(-quickRotateDegrees);
-        }
-        Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
-        cam.transform.rotation = headsetRotation;
+        //Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+        //if (rightJoystick.x >= .5f)
+        //{
+        //    QuickRotate(quickRotateDegrees);
+        //}
+        //else if (rightJoystick.x <= -.5f)
+        //{
+        //    QuickRotate(-quickRotateDegrees);
+        //}
+        //Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
+        //cam.transform.rotation = headsetRotation;
 
         //camera without VR
         if (pcMode)
@@ -110,26 +110,26 @@ public class PlayerScript : MonoBehaviour
         //rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
         //rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
         //rightHand.transform.Rotate(0, -90, 0);
-        if (rightJoystick.y >= .5f)
-        {
-            beam.SetActive(true);
-            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
-            {
-                beam.GetComponent<MeshRenderer>().material = legitTPPos;
-            }
-            else
-            {
-                beam.GetComponent<MeshRenderer>().material = illigalTPPos;
-            }
-        }
-        else if (rightJoystick.y < .5f && beam.activeSelf)
-        {
-            beam.SetActive(false);
-            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
-            {
-                transform.position = tpCheck.point + new Vector3(0, .3f, 0);
-            }
-        }
+        //if (rightJoystick.y >= .5f)
+        //{
+        //    beam.SetActive(true);
+        //    if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
+        //    {
+        //        beam.GetComponent<MeshRenderer>().material = legitTPPos;
+        //    }
+        //    else
+        //    {
+        //        beam.GetComponent<MeshRenderer>().material = illigalTPPos;
+        //    }
+        //}
+        //else if (rightJoystick.y < .5f && beam.activeSelf)
+        //{
+        //    beam.SetActive(false);
+        //    if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
+        //    {
+        //        transform.position = tpCheck.point + new Vector3(0, .3f, 0);
+        //    }
+        //}
 
         //interaction
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 4))
@@ -159,20 +159,20 @@ public class PlayerScript : MonoBehaviour
         }
 
         //chatgpt stuff
-        Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
-        Quaternion headRotation = InputTracking.GetLocalRotation(XRNode.Head);
+        //Vector3 headPosition = InputTracking.GetLocalPosition(XRNode.Head);
+        //Quaternion headRotation = InputTracking.GetLocalRotation(XRNode.Head);
 
-        if (rightHandDevice.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 handPosition))
-        {
-            Vector3 newHandPosition = headRotation * (handPosition - headPosition) + headPosition + initialOffset;
-            rightHand.transform.position = newHandPosition;
-        }
+        //if (rightHandDevice.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 handPosition))
+        //{
+        //    Vector3 newHandPosition = headRotation * (handPosition - headPosition) + headPosition + initialOffset;
+        //    rightHand.transform.position = newHandPosition;
+        //}
 
-        if (rightHandDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion handRotation))
-        {
-            Quaternion newHandRotation = handRotation * Quaternion.Inverse(headRotation);
-            rightHand.transform.rotation = newHandRotation;
-        }
+        //if (rightHandDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion handRotation))
+        //{
+        //    Quaternion newHandRotation = handRotation * Quaternion.Inverse(headRotation);
+        //    rightHand.transform.rotation = newHandRotation;
+        //}
     }
 
     private void FixedUpdate()
@@ -249,7 +249,7 @@ public class PlayerScript : MonoBehaviour
         //if statement is to make sure the game doesn't crash if there is no displayscreen in the scene
         if (n_displayScreen != null)
         {
-            n_displayScreen.GetComponent<DisplayOrders>().SetList(n_debugList);
+            n_displayScreen.GetComponent<DisplayOrders>().SetList(n_debugList, null);
         }
     }
 }

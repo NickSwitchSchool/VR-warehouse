@@ -22,7 +22,7 @@ public class ExportManager : MonoBehaviour
         //if statement is to make sure the game doesn't crash if there is no displayscreen in the scene
         if (n_displayScreen != null)
         {
-            n_displayScreen.GetComponent<DisplayOrders>().SetList(truckList);
+            n_displayScreen.GetComponent<DisplayOrders>().SetList(truckList, this);
         }
         exportList = truckList;
     }

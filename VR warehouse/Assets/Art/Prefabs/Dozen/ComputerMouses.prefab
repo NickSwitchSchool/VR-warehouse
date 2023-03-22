@@ -127,7 +127,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1382130285258710750
@@ -334,6 +334,7 @@ MonoBehaviour:
   content: []
   pickedUpDistancePC: 1.5
   pickedUpDistanceVR: 1
+  boxState: 0
 --- !u!95 &4097830202195207694
 Animator:
   serializedVersion: 5
