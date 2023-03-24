@@ -3052,6 +3052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9165797768001435688, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15d8bc02aa46758499c4380fd9b92afe, type: 2}
     - target: {fileID: -8679921383154817045, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3096,6 +3100,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1526964690268444965, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15d8bc02aa46758499c4380fd9b92afe, type: 2}
+    - target: {fileID: -809828480950454423, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15d8bc02aa46758499c4380fd9b92afe, type: 2}
     - target: {fileID: -678588488315902003, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3104,6 +3116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarageDoor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15d8bc02aa46758499c4380fd9b92afe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83a37447b54374d44812643f6f0a99ae, type: 3}
 --- !u!1001 &1756210775
