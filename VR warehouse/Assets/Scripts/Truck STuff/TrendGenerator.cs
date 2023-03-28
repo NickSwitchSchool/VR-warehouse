@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,9 +8,10 @@ public class TrendGenerator : MonoBehaviour
 {
     public InventoryManager inventoryManager;
     public List<Product> products = new List<Product>();
-    public float MaxValue;
+    public int maxValue;
     public float TotalValue;
     public bool changeTrend;
+    public int minValue;
 
     public int minChange;
     public int maxChange;
@@ -20,106 +22,66 @@ public class TrendGenerator : MonoBehaviour
         products = inventoryManager.productList;
         for (int x = 0; x < products.Count; x++)
         {
-            products[x].trendWeight = MaxValue / products.Count;
+            products[x].trendWeight = maxValue / products.Count;
         }
     }
     public void Update()
     {
         if (changeTrend == true)
         {
-            ChangeTrend(Random.Range(minChange,maxChange));
+            ChangeTrend(Random.Range(minChange, maxChange));
         }
     }
-    public void ChangeTrend(float value)
+    public void ChangeTrend(int value)
     {
         //check if value is not to high
         Debug.Log("Changing Trends");
-        if (value < MaxValue - maxChange)
+        if (value < maxValue - maxChange)
         {
             //picking a random product out of the list
             int rndProduct = Random.Range(0, products.Count);
             int index = rndProduct;
 
-            if (products[index].trendWeight + value < MaxValue)
-            {
-                products[index].trendWeight = products[index].trendWeight + value;
-                List<Product> changeList = new List<Product>(products);
-                List<Product> tempList = new List<Product>();
-                
-                //removing the changed product out of the list
-                changeList.Remove(products[index]);
+            products[index].trendWeight = products[index].trendWeight + value;
+            List<Product> skipList = new List<Product>(products);
 
-                int count = 0;
-                float newValue = 0;
+            //removing the changed product out of the list
+            skipList.Remove(products[index]);
 
-                //if the value of other products become 0 
-                for (int y = 0; y < changeList.Count; y++)
-                {
-                    if ((changeList[y].trendWeight - value) < 5)
-                    {
-                        newValue = value - changeList[y].trendWeight;
-                        changeList[y].trendWeight = 5;
-                        tempList.Add(changeList[y]);
-                        changeList.RemoveAt(y);
-                        count++;
-                    }
-                    else
-                    {
-                        changeList[y].trendWeight -= Mathf.Round((value + newValue) / changeList.Count);
-                        newValue = 0;
-                    }
+            CalcBalance(value, skipList);
 
-                }
-
-                CheckTrend(changeList);
-                CheckTotal(changeList);
-
-                print("done");
-                changeTrend = false;
-            }
+            changeTrend = false;
         }
-
     }
 
-    private void CheckTrend(List<Product> ChangeList)
+    public void CalcBalance(int _value, List<Product> _skipList)
     {
-        if(TotalValue > MaxValue)
+        //dividing the value by the amount of products after removing the remainder
+        int remainder = _value % _skipList.Count;
+        _value = _value - remainder;
+
+        for (int a = 0; a < _skipList.Count; a++)
         {
-            int z = 0;
-           while(TotalValue > MaxValue)
-           {
-                if ((ChangeList[z].trendWeight - 1) > 5)
-                {
-                    ChangeList[z].trendWeight--;
-                }
-                z++;
-                if (z >= ChangeList.Count)
-                {
-                    z = 0;
-                }
-                CheckTotal(ChangeList);
+            if (_skipList[a].trendWeight - (_value / _skipList.Count) > minValue)
+            {
+                _skipList[a].trendWeight -= _value / _skipList.Count;
+            }
+            else
+            {
+                _skipList[a].trendWeight -= _value / _skipList.Count;
+                _skipList[a].trendWeight = minValue;
             }
         }
-        else if(TotalValue < MaxValue)
+        
+        
+        CheckTotal();
+        if(remainder > 0)
         {
-            int z = 0;
-            while(TotalValue < MaxValue)
-            {
-                if ((ChangeList[z].trendWeight + 1) < MaxValue)
-                {
-                    ChangeList[z].trendWeight++;
-                }
-                z++;
-                if (z >= ChangeList.Count)
-                {
-                    z = 0;
-                }
-                CheckTotal(ChangeList);
-            }
+            CalcBalance(remainder, _skipList);
         }
     }
 
-    public void CheckTotal(List<Product> ChangeList)
+    public void CheckTotal()
     {
         float currentValue = 0;
         for (int x = 0; x < products.Count; x++)
@@ -127,10 +89,5 @@ public class TrendGenerator : MonoBehaviour
             currentValue += products[x].trendWeight;
         }
         TotalValue = currentValue;
-
-        if (TotalValue != MaxValue)
-        {
-            CheckTrend(ChangeList);
-        }
     }
 }
