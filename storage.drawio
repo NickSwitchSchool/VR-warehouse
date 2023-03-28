@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-28T12:40:51.012Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="91Bl0FKzrZUTkIEpNFou" version="21.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-28T12:46:18.214Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="eM9QsK4tA4e9bi3HuQFd" version="21.1.1" type="github">
   <diagram name="Pagina-1" id="hMjMNCtPBdTX2SfuTHIE">
-    <mxGraphModel dx="1510" dy="375" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2261" dy="788" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -64,16 +64,16 @@
         <mxCell id="SE8H_QsxnCohwh4vq3oM-36" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;+ productsInScene : List&amp;lt;Pallet&amp;gt;&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="SE8H_QsxnCohwh4vq3oM-35" vertex="1">
           <mxGeometry y="26" width="190" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="XyyjayR8JcrgaXDP8lsu-1" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;+ requestedProducts : List&amp;lt;Product&amp;gt;&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SE8H_QsxnCohwh4vq3oM-35">
+        <mxCell id="XyyjayR8JcrgaXDP8lsu-1" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;+ requestedProducts : List&amp;lt;Product&amp;gt;&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="SE8H_QsxnCohwh4vq3oM-35" vertex="1">
           <mxGeometry y="52" width="190" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="XyyjayR8JcrgaXDP8lsu-3" value="+ goal : Vector3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SE8H_QsxnCohwh4vq3oM-35">
+        <mxCell id="XyyjayR8JcrgaXDP8lsu-3" value="+ goal : Vector3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="SE8H_QsxnCohwh4vq3oM-35" vertex="1">
           <mxGeometry y="78" width="190" height="26" as="geometry" />
         </mxCell>
         <mxCell id="SE8H_QsxnCohwh4vq3oM-37" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="SE8H_QsxnCohwh4vq3oM-35" vertex="1">
           <mxGeometry y="104" width="190" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="XyyjayR8JcrgaXDP8lsu-4" value="+ getProduct : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SE8H_QsxnCohwh4vq3oM-35">
+        <mxCell id="XyyjayR8JcrgaXDP8lsu-4" value="+ getProduct : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="SE8H_QsxnCohwh4vq3oM-35" vertex="1">
           <mxGeometry y="112" width="190" height="26" as="geometry" />
         </mxCell>
         <mxCell id="SE8H_QsxnCohwh4vq3oM-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="SE8H_QsxnCohwh4vq3oM-3" target="SE8H_QsxnCohwh4vq3oM-35" edge="1">
@@ -84,6 +84,12 @@
         </mxCell>
         <mxCell id="SE8H_QsxnCohwh4vq3oM-41" value="Wanneer de prefab van de complete Pallet spawnt, stopt hij zichzelf in de productsInScene list van de robot" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
           <mxGeometry x="320" y="450" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="9LAHw_C2RlRewY3wlwk2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.962;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9LAHw_C2RlRewY3wlwk2-1" target="XyyjayR8JcrgaXDP8lsu-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9LAHw_C2RlRewY3wlwk2-1" value="Robot vind de producten door in de productsInScene variable te zoeken naar pallets die dezelfde naam hebben als de producten in requestedProducts. Dan kijkt hij naar de isStored bool om te kijken of ze wel al in de kasten liggen. Als dat zo is, zet hij goal naar robotGoalPosition. Hij loopt daar dan naar toe. Als hij er is, kijkt hij in de height variable op welke plank het product ligt. Dan pakt hij het product van die plank." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+          <mxGeometry x="520" y="450" width="300" height="200" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
