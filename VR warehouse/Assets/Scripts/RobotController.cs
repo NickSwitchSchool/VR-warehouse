@@ -17,6 +17,8 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private int currentOrder;
     public Transform target;
+
+    public List<Pallet> productsInScene;
     
     public void NewOrders(List<Product> _newOrders)
     {

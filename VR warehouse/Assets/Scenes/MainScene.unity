@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: a10f301060fb8b64286eae5a6e505582, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: f93beab57b314214f82eca01087aab49, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: a4cb72923872dde459a2728bcbd2658b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -605,6 +605,38 @@ PrefabInstance:
       propertyPath: vrButtonIndicator
       value: 
       objectReference: {fileID: 2100000, guid: 82bd5201108b2584cafeed50c3ca1579, type: 2}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].emptySpaceColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].emptySpaceColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].emptySpaceColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].emptySpaceColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].filledSpaceColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].filledSpaceColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112830683774441548, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
+      propertyPath: testStorage.Array.data[0].filledSpaceColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8112830683774441549, guid: 16de055fbf6d6584eb54066f11ff7dfa, type: 3}
       propertyPath: m_Name
       value: Player
