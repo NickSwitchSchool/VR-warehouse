@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: f93beab57b314214f82eca01087aab49, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: a4cb72923872dde459a2728bcbd2658b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3302,6 +3302,7 @@ MonoBehaviour:
   orderList: []
   currentOrder: 0
   target: {fileID: 0}
+  productsInScene: []
 --- !u!195 &2089809443
 NavMeshAgent:
   m_ObjectHideFlags: 0
