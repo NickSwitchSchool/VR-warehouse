@@ -213,11 +213,11 @@ public class TruckController : MonoBehaviour
         this.GetComponent<Animator>().SetBool("TruckDoor", doorState);
         if (_type == PortType.Import)
         {
-            //importDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
+            importDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
         }
         else
         {
-            //exportDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
+            exportDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
         }
     }
     public void EmptyTruck(Product newProduct)

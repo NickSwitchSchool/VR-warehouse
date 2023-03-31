@@ -36,8 +36,7 @@ public class TrendGenerator : MonoBehaviour
     {
         //check if value is not to high
         Debug.Log("Changing Trends");
-        if (value < maxValue - maxChange)
-        {
+        
             //picking a random product out of the list
             int rndProduct = Random.Range(0, products.Count);
             int index = rndProduct;
@@ -51,11 +50,12 @@ public class TrendGenerator : MonoBehaviour
             CalcBalance(value, skipList);
 
             changeTrend = false;
-        }
+        
     }
 
     public void CalcBalance(int _value, List<Product> _skipList)
     {
+        Debug.Log("Calculating....");
         //dividing the value by the amount of products after removing the remainder
         int remainder = _value % _skipList.Count;
         _value = _value - remainder;
@@ -68,7 +68,6 @@ public class TrendGenerator : MonoBehaviour
             }
             else
             {
-                _skipList[a].trendWeight -= _value / _skipList.Count;
                 _skipList[a].trendWeight = minValue;
             }
         }
