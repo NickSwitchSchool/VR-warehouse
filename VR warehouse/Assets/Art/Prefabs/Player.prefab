@@ -307,8 +307,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.25
+  far clip plane: 500
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1376,6 +1376,7 @@ GameObject:
   - component: {fileID: 8112830683774441548}
   - component: {fileID: 8112830683774441557}
   - component: {fileID: 8112830683774441558}
+  - component: {fileID: 375922215}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1493,18 +1494,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c310f69988dc06041877f7905345a4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pcMode: 1
   speed: 500
   rightHand: {fileID: 8112830682424308591}
   beam: {fileID: 8112830682993486714}
   legitTPPos: {fileID: 2100000, guid: 4e4dd5c87dd9fad4abf4f890be8c9948, type: 2}
   illigalTPPos: {fileID: 2100000, guid: cddd64a8dda693a41b502d1a91c1ce2f, type: 2}
-  testWithoutVR: 1
   sensitivity: 7
   maxXRotation: 90
   quickRotateInterval: 0.5
   quickRotateDegrees: 30
   cam: {fileID: 8112830682260903676}
   cameraRig: {fileID: 0}
+  vrButtonIndicator: {fileID: 2100000, guid: 82bd5201108b2584cafeed50c3ca1579, type: 2}
+  pcButtonIndicator: {fileID: 2100000, guid: fea62888c237d4e49bd46c4b0573dc33, type: 2}
+  stresser: {fileID: 375922215}
 --- !u!114 &8112830683774441557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,3 +1618,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &375922215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112830683774441549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5971fb52ece6fbd4bbaf0b3193177cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alarmLights:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  defaultAreaColor: {r: 0, g: 0, b: 0, a: 0}
+  stressAreaColor: {r: 1, g: 0, b: 0, a: 1}
+  fadeSpeed: 0.1
+  settings: {fileID: 8112830683774441557}
+  alarmSound: {fileID: 0}
+  stressMusic: {fileID: 8300000, guid: 32eba2681b3a4024283cba24104c23ca, type: 3}
+  relaxedMusic: {fileID: 8300000, guid: 63941ee31b621a3479702e931cde0924, type: 3}
