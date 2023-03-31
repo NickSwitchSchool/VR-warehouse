@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb829b7254bb4f94b8f005b4aa1068ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  palletName: PC-mouses and music boxes
+  palletName: PCmouses and music boxes
   needsTags:
   - PCmouse
   - PCmouse

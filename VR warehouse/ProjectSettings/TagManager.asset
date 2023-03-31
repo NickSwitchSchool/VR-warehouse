@@ -17,6 +17,9 @@ TagManager:
   - MusicBoxes
   - PCs
   - Laptops
+  - WateringCans
+  - Buckets
+  - Gnome
   layers:
   - Default
   - TransparentFX
