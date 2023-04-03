@@ -47,9 +47,9 @@ public class TruckController : MonoBehaviour
             //when there is at least 1 product in inventory fill it with the missing products
             if (inventoryManager.inventory.Count > 0)
             {
-                for (int a = 0; a < inventoryManager.productList.Count; a++)
+                for (int a = 0; a < inventoryManager.productImportList.Count; a++)
                 {
-                    Product virtualProduct = inventoryManager.productList.ElementAt(a);
+                    Product virtualProduct = inventoryManager.productImportList.ElementAt(a);
                     Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
                     if (inventoryManager.inventory.ElementAt(inventoryManager.inventory.IndexOf(newProduct)).productAmount <= 2)
                     {
@@ -74,9 +74,9 @@ public class TruckController : MonoBehaviour
                 int count = 0;
                 if(count < 7)
                 {
-                    for (int a = 0; a < inventoryManager.productList.Count; a++)
+                    for (int a = 0; a < inventoryManager.productImportList.Count; a++)
                     {
-                        Product virtualProduct = inventoryManager.productList.ElementAt(a);
+                        Product virtualProduct = inventoryManager.productImportList.ElementAt(a);
                         Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
 
                         truckList.Add(newProduct);

@@ -11,7 +11,8 @@ public class RobotController : MonoBehaviour
     public bool gettingProduct;
     public Product holdingProduct;
     public InventoryManager inventoryManager;
-
+    public bool walking;
+    public float distanceWalked;
     private GameObject currentProduct;
     public List<Product> orderList;
     [SerializeField]
@@ -24,12 +25,21 @@ public class RobotController : MonoBehaviour
     {
         this.orderList = _newOrders;
         currentOrder = 0;
+        distanceWalked= 0;
         GetProduct();
+    }
+
+    public void Update()
+    {
+        if(walking)
+        {
+            distanceWalked += Time.deltaTime;
+        }
     }
     public void GetProduct()
     {
         currentOrder = 0;
-        if(currentOrder >= this.orderList.Count)
+        if(currentOrder >= orderList.Count)
         {
             gettingProduct = false;
             return;
