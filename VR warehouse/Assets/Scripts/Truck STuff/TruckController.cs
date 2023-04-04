@@ -40,10 +40,13 @@ public class TruckController : MonoBehaviour
         {
             RandomOrder();
             Debug.Log("Setting Export list");
-
+            doorState = true;
+            ToggleDoors(PortType.Export);
         }
         if (task == PortType.Import)
         {
+            doorState = true;
+            ToggleDoors(PortType.Import);
             //when there is at least 1 product in inventory fill it with the missing products
             if (inventoryManager.inventory.Count > 0)
             {
@@ -90,6 +93,7 @@ public class TruckController : MonoBehaviour
         startTime = Time.time;
         travelTime = Vector3.Distance(startPos.position, endPos.position);
         timer = timeWindow;
+        
     }
     public void Update()
     {
@@ -118,6 +122,7 @@ public class TruckController : MonoBehaviour
         //when the truck is on its spot check what its task is and execute code accordingly
         if (onSpot)
         {
+            this.GetComponent<Animator>().SetBool("TruckDoor", doorState);
             if (task == PortType.Export && gaveOrder == false)
             {
                 exportManager.AddOrder(exportNeeds);
@@ -210,7 +215,7 @@ public class TruckController : MonoBehaviour
     public void ToggleDoors(PortType _type)
     {
         //if doorstate is false, door are closed, if true they are open
-        this.GetComponent<Animator>().SetBool("TruckDoor", doorState);
+        
         if (_type == PortType.Import)
         {
             importDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
@@ -260,17 +265,19 @@ public class TruckController : MonoBehaviour
     IEnumerator CloseDoor()
     {
         doorState = false;
-        ToggleDoors(this.GetComponent<TruckController>().task);
         yield return new WaitForSeconds(5);
         if (onSpot)
         {
+            this.GetComponent<Animator>().SetBool("TruckDoor", doorState);
             startTime = Time.time;
             Transform oldPos = endPos;
             endPos = startPos;
             startPos = oldPos;
             onSpot = false;
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+        ToggleDoors(this.GetComponent<TruckController>().task);
+        yield return new WaitForSeconds(1);
         var truckManager = GameObject.Find("TruckManager").GetComponent<TruckSpawner>();
         if (this.task == PortType.Import)
         {
