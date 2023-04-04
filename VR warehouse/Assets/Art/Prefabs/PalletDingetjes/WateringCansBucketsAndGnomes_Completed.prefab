@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7806155316840000832}
   - component: {fileID: 2424479928448628723}
   - component: {fileID: 492774271359121503}
-  - component: {fileID: 5369391744550230245}
+  - component: {fileID: 7955856921601616000}
   m_Layer: 0
   m_Name: WateringCansBucketsAndGnomes_Completed
   m_TagString: Untagged
@@ -102,7 +102,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.4785396, z: 1.2}
   m_Center: {x: 0, y: 0.2392698, z: 0}
---- !u!114 &5369391744550230245
+--- !u!114 &7955856921601616000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,22 +111,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3617072162051435911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb829b7254bb4f94b8f005b4aa1068ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 747ba3bfe77607e49992069af8c6dfd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  palletName: Wateringcans, buckets and gnomes
-  needsTags:
-  - WateringCans
-  - Buckets
-  - Gnome
-  - Gnome
-  boxes:
-  - {fileID: 8926976713650850028}
-  - {fileID: 7804273679124864518}
-  - {fileID: 7284674548684882698}
-  - {fileID: 1161236568309778425}
-  packedBoxes: []
-  completeProductPrefab: {fileID: 15112046268856893, guid: d7e75e25c6f974042b8638dfe821192f, type: 3}
+  boxes: []
+  emptyPalletVariation: {fileID: 0}
+  strap: {fileID: 0}
+  name: Wateringcans, Buckets And Gnomes
+  height: 0
+  robotGoalPosition: {x: 0, y: 0, z: 0}
+  isStored: 0
 --- !u!1001 &793354224133098354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,11 +202,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3b5f373579d9484a92a972a33279d33, type: 3}
---- !u!1 &7284674548684882698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7933886314837133432, guid: f3b5f373579d9484a92a972a33279d33, type: 3}
-  m_PrefabInstance: {fileID: 793354224133098354}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7949852022600194480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7300620034802651842, guid: f3b5f373579d9484a92a972a33279d33, type: 3}
@@ -304,11 +293,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2781410647801522282, guid: 2daaecd419f92974ca1b395508018adb, type: 3}
   m_PrefabInstance: {fileID: 6210640451734960700}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8926976713650850028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3301805466530788048, guid: 2daaecd419f92974ca1b395508018adb, type: 3}
-  m_PrefabInstance: {fileID: 6210640451734960700}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6605972345183082565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -395,11 +379,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4370930331619581177, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
   m_PrefabInstance: {fileID: 6605972345183082565}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7804273679124864518 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4027195905841694275, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
-  m_PrefabInstance: {fileID: 6605972345183082565}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9081325103139983233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,11 +460,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3b5f373579d9484a92a972a33279d33, type: 3}
---- !u!1 &1161236568309778425 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7933886314837133432, guid: f3b5f373579d9484a92a972a33279d33, type: 3}
-  m_PrefabInstance: {fileID: 9081325103139983233}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1969861037297245507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7300620034802651842, guid: f3b5f373579d9484a92a972a33279d33, type: 3}
