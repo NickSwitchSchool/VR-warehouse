@@ -157,7 +157,7 @@ public class TruckController : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            Product virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
+            Product virtualProduct = inventoryManager.trendList.ElementAt(Random.Range(0, inventoryManager.trendList.Count));
             Product newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
 
             if (exportNeeds.Count > 0)
@@ -166,7 +166,7 @@ public class TruckController : MonoBehaviour
                 {
                     while (truckList[a].productObject == newProduct.productObject && truckList[a].productAmount == 3)
                     {
-                        virtualProduct = inventoryManager.productList.ElementAt(Random.Range(0, inventoryManager.productList.Count));
+                        virtualProduct = inventoryManager.trendList.ElementAt(Random.Range(0, inventoryManager.trendList.Count));
                         newProduct = new Product(virtualProduct.productName, virtualProduct.productAmount, virtualProduct.productObject, virtualProduct.trendWeight);
                     }
                 }

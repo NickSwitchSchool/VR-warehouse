@@ -23,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     public TrendGenerator trendGenerator;
     public float trendTimer;
     public int trendCooldown;
+    public List<Product> trendList;
     public void Start()
     {
         trendTimer = trendCooldown;
@@ -56,6 +57,18 @@ public class InventoryManager : MonoBehaviour
             if(inventory.ElementAt(inventory.IndexOf(oldProduct)).productAmount <= 0)
             {
                 inventory.Remove(oldProduct);
+            }
+        }
+    }
+
+    public void ChangeTrendList()
+    {
+        trendList.Clear();
+        for(int a = 0; a < productList.Count; a++)
+        {
+            for(int b = 0; b < productList[a].trendWeight; b++)
+            {
+                trendList.Add(productList[a]);
             }
         }
     }

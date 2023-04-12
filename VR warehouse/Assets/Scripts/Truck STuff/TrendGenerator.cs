@@ -12,7 +12,8 @@ public class TrendGenerator : MonoBehaviour
     public int maxValue;
     public float TotalValue;
     public bool changeTrend;
-   
+
+    private List<Product> skipList;
 
     public int minChange;
     public int maxChange;
@@ -25,6 +26,8 @@ public class TrendGenerator : MonoBehaviour
         {
             products[x].trendWeight = maxValue / products.Count;
         }
+        skipList = new List<Product>(products);
+        CheckTotal(skipList);
     }
     public void Update()
     {
@@ -43,7 +46,7 @@ public class TrendGenerator : MonoBehaviour
         int index = rndProduct;
 
         products[index].trendWeight = products[index].trendWeight + value;
-        List<Product> skipList = new List<Product>(products);
+        
 
         //removing the changed product out of the list
         skipList.Remove(products[index]);
@@ -101,5 +104,6 @@ public class TrendGenerator : MonoBehaviour
             _skipList[rndNumber].trendWeight += missingValue;
             TotalValue += missingValue;
         }
+        inventoryManager.ChangeTrendList();
     }
 }

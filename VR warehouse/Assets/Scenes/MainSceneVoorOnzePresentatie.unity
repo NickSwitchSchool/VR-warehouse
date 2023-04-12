@@ -579,6 +579,14 @@ PrefabInstance:
       value: InventoryManager
       objectReference: {fileID: 0}
     - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: trendCooldown
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+      propertyPath: trendGenerator
+      value: 
+      objectReference: {fileID: 1621400843}
+    - target: {fileID: 418621601591139129, guid: 26cc079d009f16741b64f733b9337464, type: 3}
       propertyPath: inventory.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2866,6 +2874,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c27b1676131989428be8874917e16e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1621400843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5869389301004886410, guid: 26cc079d009f16741b64f733b9337464, type: 3}
+  m_PrefabInstance: {fileID: 175744201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d761ee5e46694b34daf67e8d48548531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1633799770
