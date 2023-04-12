@@ -19,8 +19,23 @@ public class InventoryManager : MonoBehaviour
     public List<Product> productImportList;
     public List<Product> inventory;
 
-    
-
+    [Header("Trends")]
+    public TrendGenerator trendGenerator;
+    public float trendTimer;
+    public int trendCooldown;
+    public void Start()
+    {
+        trendTimer = trendCooldown;
+    }
+    public void Update()
+    {
+        trendTimer -= Time.deltaTime;
+        if(trendTimer <= 0)
+        {
+            trendGenerator.ChangeTrend(Random.Range(trendGenerator.minChange, trendGenerator.maxChange));
+            trendTimer = trendCooldown;
+        }
+    }
     public void AddProduct(Product newProduct)
     {
         if(inventory.Contains(newProduct))

@@ -275,9 +275,9 @@ public class TruckController : MonoBehaviour
             startPos = oldPos;
             onSpot = false;
         }
-        yield return new WaitForSeconds(2);
-        ToggleDoors(this.GetComponent<TruckController>().task);
         yield return new WaitForSeconds(1);
+        ToggleDoors(this.GetComponent<TruckController>().task);
+        yield return new WaitForSeconds(2);
         var truckManager = GameObject.Find("TruckManager").GetComponent<TruckSpawner>();
         if (this.task == PortType.Import)
         {

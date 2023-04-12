@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TrendGenerator : MonoBehaviour
 {
@@ -11,11 +12,11 @@ public class TrendGenerator : MonoBehaviour
     public int maxValue;
     public float TotalValue;
     public bool changeTrend;
-    public int minValue;
+   
 
     public int minChange;
     public int maxChange;
-
+    private int rndProduct;
 
     public void Start()
     {
@@ -30,57 +31,61 @@ public class TrendGenerator : MonoBehaviour
         if (changeTrend == true)
         {
             ChangeTrend(Random.Range(minChange, maxChange));
+            changeTrend = false;
         }
     }
     public void ChangeTrend(int value)
     {
-        //check if value is not to high
         Debug.Log("Changing Trends");
-        
-            //picking a random product out of the list
-            int rndProduct = Random.Range(0, products.Count);
-            int index = rndProduct;
 
-            products[index].trendWeight = products[index].trendWeight + value;
-            List<Product> skipList = new List<Product>(products);
+        //picking a random product out of the list
+        rndProduct = Random.Range(0, products.Count);
+        int index = rndProduct;
 
-            //removing the changed product out of the list
-            skipList.Remove(products[index]);
+        products[index].trendWeight = products[index].trendWeight + value;
+        List<Product> skipList = new List<Product>(products);
 
-            CalcBalance(value, skipList);
+        //removing the changed product out of the list
+        skipList.Remove(products[index]);
 
-            changeTrend = false;
-        
+        CalcBalance(value, skipList);
     }
 
     public void CalcBalance(int _value, List<Product> _skipList)
     {
         Debug.Log("Calculating....");
-        //dividing the value by the amount of products after removing the remainder
-        int remainder = _value % _skipList.Count;
-        _value = _value - remainder;
+        float remainder = (maxValue - products[rndProduct].trendWeight) % _skipList.Count;
 
-        for (int a = 0; a < _skipList.Count; a++)
+
+
+        for (int i = 0; i < _skipList.Count; i++)
         {
-            if (_skipList[a].trendWeight - (_value / _skipList.Count) > minValue)
+
+            _skipList[i].trendWeight = ((maxValue - products[rndProduct].trendWeight) - remainder) / _skipList.Count;
+        }
+        if (remainder % _skipList.Count == 0)
+        {
+            for (int j = 0; j < _skipList.Count; j++)
             {
-                _skipList[a].trendWeight -= _value / _skipList.Count;
+                _skipList[j].trendWeight += remainder / _skipList.Count;
+                remainder -= remainder / _skipList.Count;
             }
-            else
+
+        }
+        else
+        {
+            int newRemainder = (int)Mathf.Round(remainder % _skipList.Count);
+            remainder -= newRemainder;
+            for (int j = 0; j < _skipList.Count; j++)
             {
-                _skipList[a].trendWeight = minValue;
+                _skipList[j].trendWeight += remainder / _skipList.Count;
+                remainder -= remainder / _skipList.Count;
             }
         }
-        
-        
-        CheckTotal();
-        if(remainder > 0)
-        {
-            CalcBalance(remainder, _skipList);
-        }
+        CheckTotal(_skipList);
     }
 
-    public void CheckTotal()
+    public void CheckTotal(List<Product> _skipList)
     {
         float currentValue = 0;
         for (int x = 0; x < products.Count; x++)
@@ -88,5 +93,13 @@ public class TrendGenerator : MonoBehaviour
             currentValue += products[x].trendWeight;
         }
         TotalValue = currentValue;
+
+        if(TotalValue < maxValue)
+        {
+            float missingValue = maxValue - TotalValue;
+            int rndNumber = Random.Range(0,_skipList.Count - 1);
+            _skipList[rndNumber].trendWeight += missingValue;
+            TotalValue += missingValue;
+        }
     }
 }
