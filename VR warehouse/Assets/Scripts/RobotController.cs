@@ -33,7 +33,7 @@ public class RobotController : MonoBehaviour
     {
         if(walking)
         {
-            distanceWalked += Time.deltaTime;
+            distanceWalked += Mathf.Round(Time.deltaTime);
         }
     }
     public void GetProduct()

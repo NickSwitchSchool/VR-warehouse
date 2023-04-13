@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
     public float trendTimer;
     public int trendCooldown;
     public List<Product> trendList;
+    public GameObject trendScreen;
     public void Start()
     {
         trendTimer = trendCooldown;
@@ -71,5 +72,6 @@ public class InventoryManager : MonoBehaviour
                 trendList.Add(productList[a]);
             }
         }
+        trendScreen.GetComponent<DisplayTrends>().SetTrendList(trendList);
     }
 }
