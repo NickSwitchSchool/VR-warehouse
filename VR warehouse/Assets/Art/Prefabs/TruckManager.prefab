@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2208451495871926626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -3.49, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2208451496078508816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -148,8 +148,10 @@ MonoBehaviour:
   timeWindow: 20
   exportTrans: {fileID: 2208451496811244163}
   exportSpawn: {fileID: 2208451496078508817}
+  exportDoor: {fileID: 0}
   importTrans: {fileID: 2208451495685526043}
   importSpawn: {fileID: 2208451495871926627}
+  importDoor: {fileID: 0}
 --- !u!1 &2208451496811244162
 GameObject:
   m_ObjectHideFlags: 0

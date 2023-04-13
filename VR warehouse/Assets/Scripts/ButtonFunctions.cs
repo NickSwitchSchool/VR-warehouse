@@ -11,4 +11,16 @@ public class ButtonFunctions : MonoBehaviour
     {
         buttonFunction.Invoke();
     }
+    public void StartGame()
+    {
+
+    }
+    public void ShowSettings()
+    {
+
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

@@ -888,8 +888,8 @@ Transform:
   m_Children:
   - {fileID: 4097898905881576659}
   - {fileID: 8612817283754761476}
-  - {fileID: 8835076108708337663}
-  - {fileID: 3220377487472736300}
+  - {fileID: 1405804597171090042}
+  - {fileID: 5021233755010735529}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
@@ -1372,6 +1372,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4931015003271812173}
     m_Modifications:
+    - target: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7446772483881139273, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
       propertyPath: m_Name
       value: GarageDoorLoose
@@ -1422,11 +1434,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
---- !u!4 &8835076108708337663 stripped
+--- !u!4 &1405804597171090042 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7787727275005519603, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+  m_CorrespondingSourceObject: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
   m_PrefabInstance: {fileID: 1625780065470705932}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1786164858535684288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1028603172538866124, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+  m_PrefabInstance: {fileID: 1625780065470705932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &74779334
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786164858535684288}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ad0ac8c675fe274d809844b7cadad55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &4657431136302603999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1434,6 +1471,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4931015003271812173}
     m_Modifications:
+    - target: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7446772483881139273, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
       propertyPath: m_Name
       value: GarageDoorLoose (1)
@@ -1484,8 +1533,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
---- !u!4 &3220377487472736300 stripped
+--- !u!4 &5021233755010735529 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7787727275005519603, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+  m_CorrespondingSourceObject: {fileID: 364093990367429494, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
   m_PrefabInstance: {fileID: 4657431136302603999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5684899336084637459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1028603172538866124, guid: 8ec50448cb03f7f4c86f6ee41cf74bfe, type: 3}
+  m_PrefabInstance: {fileID: 4657431136302603999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &756880920
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684899336084637459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e694f68013fd0f141a55aa3eb2f41165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
