@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 242262049553034196}
   - component: {fileID: 3815511617008149617}
   - component: {fileID: 1375740629462896827}
+  - component: {fileID: 4580251646512327915}
   m_Layer: 0
   m_Name: DeskChair
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &4580251646512327915
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583040919035113838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.31436655
+  m_Height: 0.9426128
+  m_Direction: 1
+  m_Center: {x: -0.0008416325, y: 0.471289, z: -0.008127272}
