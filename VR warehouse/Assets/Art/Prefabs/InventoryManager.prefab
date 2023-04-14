@@ -158,6 +158,7 @@ MonoBehaviour:
   trendTimer: 0
   trendCooldown: 20
   trendList: []
+  trendScreen: {fileID: 0}
 --- !u!114 &5869389301004886410
 MonoBehaviour:
   m_ObjectHideFlags: 0

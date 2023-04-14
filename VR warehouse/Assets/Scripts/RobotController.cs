@@ -51,8 +51,15 @@ public class RobotController : MonoBehaviour
                 orderList.RemoveAt(currentOrder);
             }
         }
-        target = orderList.ElementAt(currentOrder).productObject.transform;
-        currentProduct = target.gameObject;
+        for(int i = 0; i < productsInScene.Count; i++) 
+        {
+            if (productsInScene[i].name == orderList.ElementAt(currentOrder).productName)
+            {
+                target = productsInScene[i].transform;
+                currentProduct = target.gameObject;
+            }
+        }
+        
         
         agent.SetDestination(target.position);
         if(target != null)
