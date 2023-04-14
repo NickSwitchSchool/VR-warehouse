@@ -119,7 +119,7 @@ MonoBehaviour:
   boxes: []
   emptyPalletVariation: {fileID: 0}
   strap: {fileID: 0}
-  name: Wateringcans, Buckets And Gnomes
+  name: Wateringcans, buckets and gnomes
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0

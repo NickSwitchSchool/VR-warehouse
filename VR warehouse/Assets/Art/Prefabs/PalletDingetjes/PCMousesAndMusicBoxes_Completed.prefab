@@ -131,10 +131,11 @@ MonoBehaviour:
   - {fileID: 9077087424861814894, guid: 9b7a381ce506d864d86431355425ee31, type: 3}
   emptyPalletVariation: {fileID: 8546810349645479492, guid: 793b90697718dfb4fb01c52ebf828f85, type: 3}
   strap: {fileID: 0}
-  name: 
+  name: PCmouses and music boxes
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
+  storedSlot: {fileID: 0}
   pickedUpDistanceVR: 1
   pickedUpDistancePC: 0
 --- !u!114 &4398377419558529617
