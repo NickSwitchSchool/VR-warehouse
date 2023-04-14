@@ -55,13 +55,12 @@ public class RobotController : MonoBehaviour
         {
             if (productsInScene[i].name == orderList.ElementAt(currentOrder).productName)
             {
-                target = productsInScene[i].transform;
-                currentProduct = target.gameObject;
+                agent.SetDestination(productsInScene[i].robotGoalPosition);
             }
         }
         
         
-        agent.SetDestination(target.position);
+        
         if(target != null)
         {
             gettingProduct = true;
