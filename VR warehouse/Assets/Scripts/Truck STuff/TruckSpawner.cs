@@ -65,10 +65,9 @@ public class TruckSpawner : MonoBehaviour
     }
     public IEnumerator NewTruck()
     {
-        yield return new WaitForSeconds(5);
-        if(exportTruck != null)
+        if (exportTruck != null)
         {
-            if (orderFilled && exportTruck.GetComponent<TruckController>().timer <= 0)
+            if (orderFilled)
             {
                 truckScore += 20;
                 ordersCompleted++;
@@ -88,6 +87,8 @@ public class TruckSpawner : MonoBehaviour
         {
             this.GetComponent<TruckSpawner>().SpawnTruck();
         }
+        yield return new WaitForSeconds(5);
+        
         StopCoroutine(NewTruck());
     }
     
