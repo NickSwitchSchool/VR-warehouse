@@ -68,18 +68,21 @@ public class PlayerScript : MonoBehaviour
         }
 
         //camera
-        Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
-        if (rightJoystick.x >= .5f)
+        if (!pcMode)
         {
-            QuickRotate(quickRotateDegrees);
+            Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+            if (rightJoystick.x >= .5f)
+            {
+                QuickRotate(quickRotateDegrees);
+            }
+            else if (rightJoystick.x <= -.5f)
+            {
+                QuickRotate(-quickRotateDegrees);
+            }
+            Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
+            cam.transform.rotation = headsetRotation;
+            cam.transform.localPosition = cameraRig.centerEyeAnchor.position + new Vector3(0, heightBonus, 0);
         }
-        else if (rightJoystick.x <= -.5f)
-        {
-            QuickRotate(-quickRotateDegrees);
-        }
-        Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
-        cam.transform.rotation = headsetRotation;
-        cam.transform.localPosition = cameraRig.centerEyeAnchor.position + new Vector3(0, heightBonus, 0);
 
         //camera without VR
         if (pcMode)
@@ -104,32 +107,32 @@ public class PlayerScript : MonoBehaviour
         }
 
         //teleport
-        rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
-        rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
-        rightHand.transform.Rotate(0, -90, 0);
-        if (rightJoystick.y >= .5f)
-        {
-            beam.SetActive(true);
-            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
-            {
-                beam.GetComponent<MeshRenderer>().material = legitTPPos;
-            }
-            else
-            {
-                beam.GetComponent<MeshRenderer>().material = illigalTPPos;
-            }
-        }
-        else if (rightJoystick.y < .5f && beam.activeSelf)
-        {
-            beam.SetActive(false);
-            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
-            {
-                transform.position = tpCheck.point + new Vector3(0, .3f, 0);
-            }
-        }
+        //rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
+        //rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
+        //rightHand.transform.Rotate(0, -90, 0);
+        //if (rightJoystick.y >= .5f)
+        //{
+        //    beam.SetActive(true);
+        //    if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
+        //    {
+        //        beam.GetComponent<MeshRenderer>().material = legitTPPos;
+        //    }
+        //    else
+        //    {
+        //        beam.GetComponent<MeshRenderer>().material = illigalTPPos;
+        //    }
+        //}
+        //else if (rightJoystick.y < .5f && beam.activeSelf)
+        //{
+        //    beam.SetActive(false);
+        //    if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
+        //    {
+        //        transform.position = tpCheck.point + new Vector3(0, .3f, 0);
+        //    }
+        //}
 
         //interaction
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 4))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 6))
         {
             if (interactableCheck.transform.gameObject.TryGetComponent(out Interactable interactable))
             {
@@ -148,6 +151,18 @@ public class PlayerScript : MonoBehaviour
                     if (interactable.gameObject.TryGetComponent<Box>(out Box n_box))
                     {
                         n_box.PickUpBox(this);
+                    }
+
+                    //use button
+                    if (interactable.gameObject.TryGetComponent<ButtonFunctions>(out ButtonFunctions n_function))
+                    {
+                        n_function.ActivateButtonFunction();
+                    }
+
+                    //pickup pallet
+                    if (interactable.gameObject.TryGetComponent<Pallet>(out Pallet n_pallet))
+                    {
+                        n_pallet.PickUp(this);
                     }
 
                     //implement more interactions here

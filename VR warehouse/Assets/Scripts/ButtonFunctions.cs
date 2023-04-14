@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    [Header("Assign the function here")]
     public UnityEvent buttonFunction;
+    [Header("Optional values")]
+    [SerializeField] GameObject palletPrefab;
+    [SerializeField] Vector3 palletPrefabLocationSpawn;
 
     public void ActivateButtonFunction()
     {
@@ -20,8 +24,15 @@ public class ButtonFunctions : MonoBehaviour
     {
 
     }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void SpawnPallet()
+    {
+        Debug.Log("HOIOIOIOIOIOIOI");
+        Instantiate(palletPrefab, palletPrefabLocationSpawn, Quaternion.identity);
     }
 }
