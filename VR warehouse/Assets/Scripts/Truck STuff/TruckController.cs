@@ -28,11 +28,14 @@ public class TruckController : MonoBehaviour
     public Transform startPos;
     public Transform endPos;
 
+    TruckSpawner truckManager;
+
     public bool doorState;
     public GameObject importDoor;
     public GameObject exportDoor;
     public void Start()
     {
+        truckManager = GameObject.Find("TruckManager").GetComponent<TruckSpawner>();
         gaveOrder = false;
         exportManager = GameObject.Find("ExportBox").GetComponent<ExportManager>();
         inventoryManager = exportManager.inventoryManager;
@@ -258,6 +261,7 @@ public class TruckController : MonoBehaviour
         truckInventory.UpdateInventory(_newProduct);
         if (exportNeeds.Count <= 0 && onSpot)
         {
+            truckManager.orderFilled = true;
             StartCoroutine(CloseDoor());
         }
     }
@@ -278,7 +282,7 @@ public class TruckController : MonoBehaviour
         yield return new WaitForSeconds(1);
         ToggleDoors(this.GetComponent<TruckController>().task);
         yield return new WaitForSeconds(2);
-        var truckManager = GameObject.Find("TruckManager").GetComponent<TruckSpawner>();
+        
         if (this.task == PortType.Import)
         {
             truckManager.importSpot = false;
@@ -286,8 +290,9 @@ public class TruckController : MonoBehaviour
         if (this.task == PortType.Export)
         {
             truckManager.exportSpot = false;
+            
         }
-        truckManager.orderFilled = true;
+        
         truckManager.StartCoroutine(truckManager.NewTruck());
         Destroy(gameObject);
     }

@@ -21,6 +21,10 @@ public class TruckSpawner : MonoBehaviour
     public Transform importSpawn;
     public GameObject importDoor;
 
+    [Header("Current Trucks")]
+    public GameObject importTruck;
+    public GameObject exportTruck;
+
     public void Start()
     {
         SpawnTruck();   
@@ -37,6 +41,8 @@ public class TruckSpawner : MonoBehaviour
             importSpot = true;
             spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
             spawnedTruck.GetComponent<TruckController>().importDoor = importDoor;
+
+            importTruck = spawnedTruck;
             if(importAmount < 3)
             {
                 importAmount++;
@@ -52,22 +58,27 @@ public class TruckSpawner : MonoBehaviour
             exportSpot = true;
             spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
             spawnedTruck.GetComponent<TruckController>().exportDoor = exportDoor;
+
+            exportTruck = spawnedTruck;
         }
         
     }
     public IEnumerator NewTruck()
     {
         yield return new WaitForSeconds(5);
-        if(orderFilled)
+        if(exportTruck != null)
         {
-            truckScore += 20;
-            ordersCompleted++;
-            orderFilled = false;
-        }
-        else
-        {
-            truckScore -= 10;
-            orderFilled = false;
+            if (orderFilled && exportTruck.GetComponent<TruckController>().timer <= 0)
+            {
+                truckScore += 20;
+                ordersCompleted++;
+                orderFilled = false;
+            }
+            else
+            {
+                truckScore -= 10;
+                orderFilled = false;
+            }
         }
         if (ordersCompleted >= 20)
         {
