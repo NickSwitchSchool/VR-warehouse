@@ -81,6 +81,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.4785396, z: 1.2}
   m_Center: {x: 0, y: 0.2392698, z: 0}
+--- !u!114 &1129628648051170211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823443363893040011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbba8ba2fa13c54a8af85ff326acdd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonDisplay: {fileID: 1298969139969994159}
+  visibilityTime: 0.5
 --- !u!114 &1795483096269060687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,20 +120,8 @@ MonoBehaviour:
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
---- !u!114 &1129628648051170211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823443363893040011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbba8ba2fa13c54a8af85ff326acdd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonDisplay: {fileID: 1298969139969994159}
-  visibilityTime: 0.5
+  pickedUpDistanceVR: 1
+  pickedUpDistancePC: 0
 --- !u!1001 &3656603976208097545
 PrefabInstance:
   m_ObjectHideFlags: 0

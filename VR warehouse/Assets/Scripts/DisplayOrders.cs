@@ -29,10 +29,10 @@ public class DisplayOrders : MonoBehaviour
             {
                 Destroy(n_row);
             }
-            foreach (GameObject n_thing in spawnedDebugs)
-            {
-                Destroy(n_thing);
-            }
+            //foreach (GameObject n_thing in spawnedDebugs)
+            //{
+            //    Destroy(n_thing);
+            //}
             spawnedDebugs.Clear();
             for (int i = 0; i < newOrderList.Count; i++)
             {
@@ -40,14 +40,14 @@ public class DisplayOrders : MonoBehaviour
                 newRowPosOffset.y -= distanceBetweenRows;
                 n_row.GetComponent<DisplayRow>().CompleteRowInstatiation(newOrderList[i].productAmount, newOrderList[i].productName, newOrderList[i].productObject, firstRowPosOffset, newOrderList);
 
-                //instantiate products for presentation
-                GameObject n_pallet = Instantiate(newOrderList[i].productObject.GetComponent<Pallet>().emptyPalletVariation, productDebugSpawnLocations[i].position, Quaternion.identity);
-                spawnedDebugs.Add(n_pallet);
-                for (int n_i = 0; n_i < newOrderList[i].productObject.GetComponent<Pallet>().GetBoxesThatNeedToBeOrdered().Count; n_i++)
-                {
-                    GameObject n_thing = Instantiate(newOrderList[i].productObject.GetComponent<Pallet>().GetBoxesThatNeedToBeOrdered()[n_i], productDebugSpawnLocations[i].position + new Vector3(0, 0, 2 + (n_i * 1.7f)), Quaternion.identity);
-                    spawnedDebugs.Add(n_thing);
-                }
+                ////instantiate products for presentation
+                //GameObject n_pallet = Instantiate(newOrderList[i].productObject.GetComponent<Pallet>().emptyPalletVariation, productDebugSpawnLocations[i].position, Quaternion.identity);
+                //spawnedDebugs.Add(n_pallet);
+                //for (int n_i = 0; n_i < newOrderList[i].productObject.GetComponent<Pallet>().GetBoxesThatNeedToBeOrdered().Count; n_i++)
+                //{
+                //    GameObject n_thing = Instantiate(newOrderList[i].productObject.GetComponent<Pallet>().GetBoxesThatNeedToBeOrdered()[n_i], productDebugSpawnLocations[i].position + new Vector3(0, 0, 2 + (n_i * 1.7f)), Quaternion.identity);
+                //    spawnedDebugs.Add(n_thing);
+                //}
             }
             activeOrderList = newOrderList;
             exportManager.GiveOrders();

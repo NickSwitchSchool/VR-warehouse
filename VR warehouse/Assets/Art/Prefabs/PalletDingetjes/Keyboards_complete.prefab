@@ -124,6 +124,8 @@ MonoBehaviour:
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
+  pickedUpDistanceVR: 1
+  pickedUpDistancePC: 0
 --- !u!1001 &3039771851484527277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3494125280828918920}
     m_Modifications:
+    - target: {fileID: 896183909322141173, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604514486534049676, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -226,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8604514486534049676, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.408
+      value: -0.391
       objectReference: {fileID: 0}
     - target: {fileID: 8604514486534049676, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -302,6 +308,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3494125280828918920}
     m_Modifications:
+    - target: {fileID: 896183909322141173, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604514486534049676, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -392,6 +402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3494125280828918920}
     m_Modifications:
+    - target: {fileID: 896183909322141173, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604514486534049676, guid: 6097187164b002e4dbc3f909f2f29b86, type: 3}
       propertyPath: m_RootOrder
       value: 1

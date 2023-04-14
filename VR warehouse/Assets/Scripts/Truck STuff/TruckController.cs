@@ -228,9 +228,11 @@ public class TruckController : MonoBehaviour
             exportDoor.GetComponent<Animator>().SetBool("DoorState", doorState);
         }
     }
-    public void EmptyTruck(Product newProduct)
+    public void EmptyTruck()
     {
-
+        truckList.RemoveAt(0);
+        Destroy(truckInventory.spawnedPallets[0]);
+        truckInventory.spawnedPallets.RemoveAt(0);
         if (truckList.Count <= 0 && onSpot)
         {
             StartCoroutine(CloseDoor());
