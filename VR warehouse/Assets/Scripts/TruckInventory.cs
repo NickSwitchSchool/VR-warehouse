@@ -5,6 +5,7 @@ using UnityEngine;
 public class TruckInventory : MonoBehaviour
 {
     public bool[,] inventorySpaces =  new bool[2,3];
+    public List<GameObject> spawnedPallets;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class TruckInventory : MonoBehaviour
     public void UpdateInventory(Product _newProduct)
     {
         GameObject productObject = Instantiate(_newProduct.productObject, transform.position, Quaternion.identity, this.gameObject.transform);
+        spawnedPallets.Add(productObject);
         Vector3 productPosistion = transform.position;
         bool updated = false;
 

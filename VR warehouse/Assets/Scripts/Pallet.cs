@@ -57,6 +57,7 @@ public class Pallet : MonoBehaviour
 
     public void Store(int n_height, Vector3 n_robotGoalPosition)
     {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         pickedUp = false;
         height = n_height;
         robotGoalPosition = n_robotGoalPosition;

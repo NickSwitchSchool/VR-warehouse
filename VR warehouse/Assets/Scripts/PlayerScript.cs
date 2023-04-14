@@ -165,6 +165,17 @@ public class PlayerScript : MonoBehaviour
                         n_pallet.PickUp(this);
                     }
 
+                    //get pallet from truck
+                    if (interactable.gameObject.TryGetComponent<TruckController>(out TruckController n_truck))
+                    {
+                        if(n_truck.task == TruckController.PortType.Import)
+                        {
+                            GameObject n_spawnedPallet = Instantiate(n_truck.truckList[0].productObject, new Vector3(0, -10, 0), Quaternion.identity);
+                            n_spawnedPallet.GetComponent<Pallet>().PickUp(this);
+                            n_truck.EmptyTruck();
+                        }
+                    }
+
                     //implement more interactions here
                 }
             }

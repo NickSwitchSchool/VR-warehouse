@@ -123,6 +123,8 @@ MonoBehaviour:
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
+  pickedUpDistanceVR: 1
+  pickedUpDistancePC: 0
 --- !u!114 &1984902082059392924
 MonoBehaviour:
   m_ObjectHideFlags: 0
