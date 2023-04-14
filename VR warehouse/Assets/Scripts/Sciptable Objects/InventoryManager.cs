@@ -72,6 +72,5 @@ public class InventoryManager : MonoBehaviour
                 trendList.Add(productList[a]);
             }
         }
-        trendScreen.GetComponent<DisplayTrends>().SetTrendList(trendList);
     }
 }

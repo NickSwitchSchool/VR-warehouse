@@ -28,6 +28,7 @@ public class TrendGenerator : MonoBehaviour
         }
         skipList = new List<Product>(products);
         CheckTotal(skipList);
+        inventoryManager.ChangeTrendList();
     }
     public void Update()
     {
@@ -35,6 +36,7 @@ public class TrendGenerator : MonoBehaviour
         {
             ChangeTrend(Random.Range(minChange, maxChange));
             changeTrend = false;
+            
         }
     }
     public void ChangeTrend(int value)
@@ -104,6 +106,5 @@ public class TrendGenerator : MonoBehaviour
             _skipList[rndNumber].trendWeight += missingValue;
             TotalValue += missingValue;
         }
-        inventoryManager.ChangeTrendList();
     }
 }
