@@ -81,6 +81,14 @@ public class TruckSpawner : MonoBehaviour
         }
         if (ordersCompleted >= 20)
         {
+            var inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+            PlayerPrefs.SetInt("TruckScore", truckScore);
+            float totalDistance = 0;
+            for(int robot = 0; robot >= inventoryManager.robots.Count; robot++)
+            {
+                totalDistance += inventoryManager.robots[robot].GetComponent<RobotController>().distanceWalked;
+            }
+            PlayerPrefs.SetFloat("Robot Distance", totalDistance);
             SceneManager.LoadScene("EndScene");
         }
         else
