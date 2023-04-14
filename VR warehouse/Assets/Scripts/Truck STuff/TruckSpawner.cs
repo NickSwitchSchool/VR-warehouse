@@ -7,10 +7,13 @@ using UnityEngine.SceneManagement;
 public class TruckSpawner : MonoBehaviour
 {
     public int ordersCompleted;
+    public int importAmount;
+    public bool orderFilled;
     public GameObject truck;
     public bool exportSpot;
     public bool importSpot;
     public float timeWindow;
+    public int truckScore;
     public Transform exportTrans;
     public Transform exportSpawn;
     public GameObject exportDoor;
@@ -34,6 +37,11 @@ public class TruckSpawner : MonoBehaviour
             importSpot = true;
             spawnedTruck.GetComponent<TruckController>().timeWindow = timeWindow;
             spawnedTruck.GetComponent<TruckController>().importDoor = importDoor;
+            if(importAmount < 3)
+            {
+                importAmount++;
+                return;
+            }
         }
         if(!exportSpot)
         {
@@ -50,7 +58,17 @@ public class TruckSpawner : MonoBehaviour
     public IEnumerator NewTruck()
     {
         yield return new WaitForSeconds(5);
-        ordersCompleted++;
+        if(orderFilled)
+        {
+            truckScore += 20;
+            ordersCompleted++;
+            orderFilled = false;
+        }
+        else
+        {
+            truckScore -= 10;
+            orderFilled = false;
+        }
         if (ordersCompleted >= 20)
         {
             SceneManager.LoadScene("EndScene");

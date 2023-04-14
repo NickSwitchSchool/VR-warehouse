@@ -287,6 +287,7 @@ public class TruckController : MonoBehaviour
         {
             truckManager.exportSpot = false;
         }
+        truckManager.orderFilled = true;
         truckManager.StartCoroutine(truckManager.NewTruck());
         Destroy(gameObject);
     }
