@@ -116,10 +116,11 @@ MonoBehaviour:
   - {fileID: 4265001171158120398, guid: f71e8f781a48029408608a282ff12f36, type: 3}
   emptyPalletVariation: {fileID: 7082175683875098393, guid: 752f407002438e24b97a731925ab815a, type: 3}
   strap: {fileID: 0}
-  name: 
+  name: Dirtbags
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
+  storedSlot: {fileID: 0}
   pickedUpDistanceVR: 1
   pickedUpDistancePC: 0
 --- !u!1001 &3656603976208097545

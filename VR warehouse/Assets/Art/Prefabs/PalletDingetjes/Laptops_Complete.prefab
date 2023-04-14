@@ -119,10 +119,11 @@ MonoBehaviour:
   - {fileID: 1712730651697357238, guid: fae0e5cf4fcdbfd47a4387b6fd4337f7, type: 3}
   emptyPalletVariation: {fileID: 8277974885495337663, guid: 0f707bc9062de764184ff2e482e26be3, type: 3}
   strap: {fileID: 0}
-  name: 
+  name: Laptops
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
+  storedSlot: {fileID: 0}
   pickedUpDistanceVR: 1
   pickedUpDistancePC: 0
 --- !u!114 &1984902082059392924
