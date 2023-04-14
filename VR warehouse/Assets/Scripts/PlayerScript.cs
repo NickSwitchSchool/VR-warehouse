@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     Vector3 movement;
     Rigidbody playerRB;
     [SerializeField] GameObject rightHand;
+    [SerializeField] XRController rightHandController;
+    [SerializeField] float heightBonus;
     [SerializeField] GameObject beam;
     RaycastHit tpCheck;
     [SerializeField] Material legitTPPos;
@@ -41,17 +44,10 @@ public class PlayerScript : MonoBehaviour
     [Header("Other")]
     bool paused;
 
-    [Header("ChatGPT stuff")]
-    private InputDevice rightHandDevice;
-    private Vector3 initialOffset;
-
     private void Start()
     {
         playerRB = GetComponent<Rigidbody>();
 
-        ////chatgpt stuff
-        //rightHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        //initialOffset = rightHand.transform.position - InputTracking.GetLocalPosition(XRNode.Head);
     }
     private void Update()
     {
@@ -72,17 +68,18 @@ public class PlayerScript : MonoBehaviour
         }
 
         //camera
-        //Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
-        //if (rightJoystick.x >= .5f)
-        //{
-        //    QuickRotate(quickRotateDegrees);
-        //}
-        //else if (rightJoystick.x <= -.5f)
-        //{
-        //    QuickRotate(-quickRotateDegrees);
-        //}
-        //Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
-        //cam.transform.rotation = headsetRotation;
+        Vector2 rightJoystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+        if (rightJoystick.x >= .5f)
+        {
+            QuickRotate(quickRotateDegrees);
+        }
+        else if (rightJoystick.x <= -.5f)
+        {
+            QuickRotate(-quickRotateDegrees);
+        }
+        Quaternion headsetRotation = cameraRig.centerEyeAnchor.rotation;
+        cam.transform.rotation = headsetRotation;
+        cam.transform.localPosition = cameraRig.centerEyeAnchor.position + new Vector3(0, heightBonus, 0);
 
         //camera without VR
         if (pcMode)
@@ -107,29 +104,29 @@ public class PlayerScript : MonoBehaviour
         }
 
         //teleport
-        //rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
-        //rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
-        //rightHand.transform.Rotate(0, -90, 0);
-        //if (rightJoystick.y >= .5f)
-        //{
-        //    beam.SetActive(true);
-        //    if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
-        //    {
-        //        beam.GetComponent<MeshRenderer>().material = legitTPPos;
-        //    }
-        //    else
-        //    {
-        //        beam.GetComponent<MeshRenderer>().material = illigalTPPos;
-        //    }
-        //}
-        //else if (rightJoystick.y < .5f && beam.activeSelf)
-        //{
-        //    beam.SetActive(false);
-        //    if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
-        //    {
-        //        transform.position = tpCheck.point + new Vector3(0, .3f, 0);
-        //    }
-        //}
+        rightHand.transform.position = transform.position + cameraRig.rightHandAnchor.position + transform.up * 0.5f;
+        rightHand.transform.localRotation = cameraRig.rightHandAnchor.localRotation;
+        rightHand.transform.Rotate(0, -90, 0);
+        if (rightJoystick.y >= .5f)
+        {
+            beam.SetActive(true);
+            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
+            {
+                beam.GetComponent<MeshRenderer>().material = legitTPPos;
+            }
+            else
+            {
+                beam.GetComponent<MeshRenderer>().material = illigalTPPos;
+            }
+        }
+        else if (rightJoystick.y < .5f && beam.activeSelf)
+        {
+            beam.SetActive(false);
+            if (Physics.Raycast(rightHand.transform.position, -rightHand.transform.right, out tpCheck, 100))
+            {
+                transform.position = tpCheck.point + new Vector3(0, .3f, 0);
+            }
+        }
 
         //interaction
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out interactableCheck, 4))
