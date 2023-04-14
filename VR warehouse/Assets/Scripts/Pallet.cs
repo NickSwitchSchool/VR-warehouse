@@ -11,6 +11,7 @@ public class Pallet : MonoBehaviour
     public int height;
     public Vector3 robotGoalPosition;
     public bool isStored;
+    public StorageSlot storedSlot;
 
     PlayerScript playerscript;
     bool pickedUp;
@@ -46,6 +47,10 @@ public class Pallet : MonoBehaviour
 
     public void PickUp(PlayerScript n_playerscript)
     {
+        if (storedSlot != null)
+        {
+            storedSlot.empty = true;
+        }
         pickedUp = true;
         playerscript = n_playerscript;
     }
@@ -55,8 +60,9 @@ public class Pallet : MonoBehaviour
         strap.SetActive(true);
     }
 
-    public void Store(int n_height, Vector3 n_robotGoalPosition)
+    public void Store(int n_height, Vector3 n_robotGoalPosition, StorageSlot slot)
     {
+        storedSlot = slot;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         pickedUp = false;
         height = n_height;

@@ -136,6 +136,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (interactableCheck.transform.gameObject.TryGetComponent(out Interactable interactable))
             {
+                Debug.Log($"looking at {interactable.gameObject.name}");
                 if (pcMode)
                 {
                     interactable.ShowUXButton(pcButtonIndicator);
@@ -208,7 +209,7 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 moveVector = transform.TransformDirection(movement) * speed * Time.deltaTime;
+        Vector3 moveVector = cam.transform.TransformDirection(movement) * speed * Time.deltaTime;
         playerRB.velocity = new Vector3(moveVector.x, playerRB.velocity.y, moveVector.z);
     }
 

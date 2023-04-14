@@ -97,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.1359257, z: 1.2}
-  m_Center: {x: 0, y: 0.06796276, z: 0.000000029802322}
+  m_Size: {x: 0.5974202, y: 0.1359257, z: 0.9936924}
+  m_Center: {x: 0.0011379719, y: 0.06796276, z: 0}
 --- !u!114 &849967669627747064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
+  empty: 0
 --- !u!54 &3383392252763606611
 Rigidbody:
   m_ObjectHideFlags: 0

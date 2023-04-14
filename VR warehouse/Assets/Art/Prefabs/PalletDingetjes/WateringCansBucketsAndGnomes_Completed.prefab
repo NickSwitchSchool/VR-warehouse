@@ -123,6 +123,7 @@ MonoBehaviour:
   height: 0
   robotGoalPosition: {x: 0, y: 0, z: 0}
   isStored: 0
+  storedSlot: {fileID: 0}
   pickedUpDistanceVR: 1
   pickedUpDistancePC: 0
 --- !u!114 &1092369100399132660
@@ -405,6 +406,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4163248216067655741, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4370930331619581177, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -449,13 +454,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4377079991231967357, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5165113274247413376, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566160748181256103, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6431792690589661639, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695520308454575030, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130237338961341753, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d4a1131bdf9cb847beb5a06905b30b8, type: 3}
