@@ -2,6 +2,7 @@ using Oculus.Platform;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TruckSpawner : MonoBehaviour
 {
@@ -50,15 +51,14 @@ public class TruckSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         ordersCompleted++;
-        //if (ordersCompleted >= difficulty)
-        //{
-        //    //complete game
-        //}
-        //else
-        //{
-        //    this.GetComponent<TruckSpawner>().SpawnTruck();
-        //}
-        SpawnTruck();
+        if (ordersCompleted >= 20)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
+        else
+        {
+            this.GetComponent<TruckSpawner>().SpawnTruck();
+        }
         StopCoroutine(NewTruck());
     }
     
